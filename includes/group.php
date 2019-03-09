@@ -23,29 +23,12 @@ class group {
 		'hide_on_screen' => '',
 		'active' => 1,
 		'description' => '',
+		'local_sacf' => true, // adds local sacf value
 	);
 	public $label; // the groups title
 	public $name; // the groups id
 	public $key;
 	protected static $group_count = 0;
-	// hide_on_screen array
-	/* array (
-	                0 => 'permalink',
-	                1 => 'the_content',
-	                2 => 'excerpt',
-	                3 => 'custom_fields',
-	                4 => 'discussion',
-	                5 => 'comments',
-	                6 => 'revisions',
-	                7 => 'slug',
-	                8 => 'author',
-	                9 => 'format',
-	                10 => 'page_attributes',
-	                11 => 'featured_image',
-	                12 => 'categories',
-	                13 => 'tags',
-	                14 => 'send-trackbacks',
-*/
 
 	public function __construct($title, $name = false) {
 		$this->label = $title;

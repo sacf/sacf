@@ -4,9 +4,8 @@ namespace sacf;
 
 class utils {
 
-    // admin css for help popups
-    private static $css_added = false;
-
+	// admin css for help popups
+	private static $css_added = false;
 
 	/**
 	 * hashing method for key generation
@@ -15,76 +14,72 @@ class utils {
 	 */
 	private static function key($str) {
 		return md5($str);
-    }
-    // key for field groups
-    public static function key_group($str) {
-        return 'group_'.self::key($str);
-    }
-    // key for fields
-    public static function key_field($str) {
-        return 'field_'.self::key($str);
-    }
-    // key for flex content layout
-    public static function key_layout($str) {
-        return 'layout_'.self::key($str);
-    }
+	}
+	// key for field groups
+	public static function key_group($str) {
+		return 'group_' . self::key($str);
+	}
+	// key for fields
+	public static function key_field($str) {
+		return 'field_' . self::key($str);
+	}
+	// key for flex content layout
+	public static function key_layout($str) {
+		return 'layout_' . self::key($str);
+	}
 
+	/**
+	 * Displays some help for field groups
+	 * @param class $class The sacf\group class
+	 * @param string $key The groups ID
+	 * @return void
+	 */
+	public static function help_for_group($class) {
+		// bail for non admins
+		if (!user_can(wp_get_current_user(), 'manage_options') || !is_admin()) {
+			return;
+		}
 
+		add_filter('acf/get_field_group', function ($field_group) use ($class) {
+			if ($field_group['key'] === $class->get_key()) {
+				$message = self::create_help_table($class);
+				$field_group['title'] .= self::create_tooltip($message);
+			}
+			return $field_group;
+		}, 10, 1);
+	}
 
-    /**
-     * Displays some help for field groups
-     * @param class $class The sacf\group class
-     * @param string $key The groups ID
-     * @return void
-     */
-    public static function help_for_group($class) {
-        // bail for non admins
-        if (!user_can(wp_get_current_user(), 'manage_options')) {
-            return;
-        }
+	/**
+	 * Displays some help for a field
+	 * @param class $class The sacf\field class
+	 * @return void
+	 */
+	public static function help_for_field($class) {
+		// bail for non admins
+		if (!user_can(wp_get_current_user(), 'manage_options') || !is_admin()) {
+			return;
+		}
 
-        add_filter('acf/get_field_group', function($field_group) use ($class) {
-            if ($field_group['key'] === $class->get_key()) {
-                $message = self::create_help_table($class);
-                $field_group['title'] .= self::create_tooltip($message);
-            }
-            return $field_group;
-        }, 10, 1);
-    }
+		// adds code message to label via filter
+		add_filter('acf/get_field_label', function ($label, $field) use ($class) {
+			if ($field['key'] === $class->get_key()) {
+				$message = self::create_help_table($class);
+				$label .= self::create_tooltip($message);
+			}
+			return $label;
+		}, 10, 2);
+	}
 
-    /**
-     * Displays some help for a field
-     * @param class $class The sacf\field class
-     * @return void
-     */
-    public static function help_for_field($class) {
-        // bail for non admins
-        if (!user_can(wp_get_current_user(), 'manage_options')) {
-            return;
-        }
+	// adds css to admin head
+	private static function add_global_css() {
+		// bail if css is already added
+		if (self::$css_added) {
+			return;
+		}
 
-        // adds code message to label via filter
-        add_filter('acf/get_field_label', function($label, $field) use ($class) {
-            if ($field['key'] === $class->get_key()) {
-                $message = self::create_help_table($class);
-                $label .= self::create_tooltip($message);
-            }
-            return $label;
-        }, 10, 2);
-    }
-
-
-
-     // adds css to admin head
-    private static function add_global_css() {
-        // bail if css is already added
-        if (self::$css_added) {
-            return;
-        }
-
-        self::$css_added = true;
-        add_action('admin_head', function() {
-            echo '<style type="text/css">
+		self::$css_added = true;
+		add_action('admin_head', function () {
+			echo '<style type="text/css">
                 .sacf-help__tip {
                     position: absolute;
                     visibility: hidden;
@@ -119,53 +114,52 @@ class utils {
                 .sacf-help dt { display: table-cell; padding: 0.1em 1.6em; font-family: monospace; font-weight: 600;}
                 .sacf-help dd { display: table-cell; padding: 0.1em 1.6em; margin: 0; }
                 </style>';
-        });
-    }
+		});
+	}
 
-    // creates the tooltip
-    private static function create_tooltip($message) {
-        self::add_global_css();
-        $string  = '<div class="sacf-help">';
-        $string .= '<svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-info-outline" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><g transform="translate(192 48)"><path d="M-187.148-31.646l6.721-6.72c0.671-0.672,0.671-1.76,0-2.432c-0.672-0.672-1.76-0.672-2.432,0l-7.91,7.91c-0.344,0.342-0.51,0.793-0.504,1.24c-0.006,0.448,0.16,0.896,0.504,1.239l7.91,7.91c0.67,0.671,1.76,0.671,2.432,0c0.673-0.672,0.671-1.76,0-2.432L-187.148-31.646L-187.148-31.646z"/><path d="M-161.23-33.239l-7.91-7.91c-0.672-0.672-1.76-0.672-2.433,0c-0.672,0.67-0.672,1.76,0,2.43l6.72,6.719l-6.72,6.721c-0.672,0.671-0.672,1.759,0,2.431c0.67,0.672,1.759,0.672,2.433,0l7.91-7.91c0.342-0.342,0.51-0.791,0.504-1.24C-160.723-32.448-160.891-32.897-161.23-33.239z"/><path d="M-175.76-21.995c-0.168,1.022-1.131,1.715-2.154,1.547l0,0c-1.021-0.168-1.713-1.134-1.545-2.154l3.188-19.404c0.168-1.021,1.133-1.713,2.153-1.545l0,0c1.021,0.168,1.713,1.131,1.545,2.154L-175.76-21.995z"/></g></svg>';
-        $string .= '<div class="sacf-help__tip">'.$message.'</div>';
-        $string .= '</div>';
-        return $string;
-    }
+	// creates the tooltip
+	private static function create_tooltip($message) {
+		self::add_global_css();
+		$string = '<div class="sacf-help">';
+		$string .= '<svg aria-hidden="true" role="img" focusable="false" class="dashicon dashicons-info-outline" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><g transform="translate(192 48)"><path d="M-187.148-31.646l6.721-6.72c0.671-0.672,0.671-1.76,0-2.432c-0.672-0.672-1.76-0.672-2.432,0l-7.91,7.91c-0.344,0.342-0.51,0.793-0.504,1.24c-0.006,0.448,0.16,0.896,0.504,1.239l7.91,7.91c0.67,0.671,1.76,0.671,2.432,0c0.673-0.672,0.671-1.76,0-2.432L-187.148-31.646L-187.148-31.646z"/><path d="M-161.23-33.239l-7.91-7.91c-0.672-0.672-1.76-0.672-2.433,0c-0.672,0.67-0.672,1.76,0,2.43l6.72,6.719l-6.72,6.721c-0.672,0.671-0.672,1.759,0,2.431c0.67,0.672,1.759,0.672,2.433,0l7.91-7.91c0.342-0.342,0.51-0.791,0.504-1.24C-160.723-32.448-160.891-32.897-161.23-33.239z"/><path d="M-175.76-21.995c-0.168,1.022-1.131,1.715-2.154,1.547l0,0c-1.021-0.168-1.713-1.134-1.545-2.154l3.188-19.404c0.168-1.021,1.133-1.713,2.153-1.545l0,0c1.021,0.168,1.713,1.131,1.545,2.154L-175.76-21.995z"/></g></svg>';
+		$string .= '<div class="sacf-help__tip">' . $message . '</div>';
+		$string .= '</div>';
+		return $string;
+	}
 
-    // creates dev notice from class files
-    private static function create_help_table($class) {
-        $prod_class = new \ReflectionClass( $class );
+	// creates dev notice from class files
+	private static function create_help_table($class) {
+		$prod_class = new \ReflectionClass($class);
 		$public_methods = $prod_class->getMethods(\ReflectionMethod::IS_PUBLIC);
-        $message_string = '';
-		foreach ( $public_methods as $method ) {
-			if ( !(
-                $method->getName() == '__construct' ||
-                $method->getName() == 'make_slug' ||
-                $method->getName() == 'make' ||
-                $method->getName() == 'get_key' ||
-                $method->getName() == 'help'
-                )) {
-                $message_string .= '<dl>';
-                $message_string .= '<dt>'.$method->getName().'()</dt>';
-                $message_string .= '<dd>'.self::getDocComment($method->getDocComment(), '@help').'</dd>';
-                $message_string .= '</dl>';
+		$message_string = '';
+		foreach ($public_methods as $method) {
+			if (!(
+				$method->getName() == '__construct' ||
+				$method->getName() == 'make_slug' ||
+				$method->getName() == 'make' ||
+				$method->getName() == 'get_key' ||
+				$method->getName() == 'help'
+			)) {
+				$message_string .= '<dl>';
+				$message_string .= '<dt>' . $method->getName() . '()</dt>';
+				$message_string .= '<dd>' . self::getDocComment($method->getDocComment(), '@help') . '</dd>';
+				$message_string .= '</dl>';
 			}
-        }
-        return $message_string;
-    }
+		}
+		return $message_string;
+	}
 
-
-    // gets tagged line from DocComment, eg: @help:
+	// gets tagged line from DocComment, eg: @help:
 	private static function getDocComment($str, $tag = '') {
-	    if (empty($tag)) {
-	        return $str;
-	    }
-	    $matches = array();
-	    preg_match("/".$tag.":(.*)(\\r\\n|\\r|\\n)/U", $str, $matches);
-	    if (isset($matches[1])) {
-	        return trim($matches[1]);
-	    }
-	    return '';
+		if (empty($tag)) {
+			return $str;
+		}
+		$matches = array();
+		preg_match("/" . $tag . ":(.*)(\\r\\n|\\r|\\n)/U", $str, $matches);
+		if (isset($matches[1])) {
+			return trim($matches[1]);
+		}
+		return '';
 	}
 
 }
