@@ -11,10 +11,10 @@ class group extends base {
 
 	private $sub_fields = array();
 	protected $defaults = array(
-            'layout' => 'block'
-        );
+		'layout' => 'block',
+	);
 
-	public function __construct($label, $name=false) {
+	public function __construct($label, $name = false) {
 		parent::__construct($label, $name, 'group');
 	}
 
@@ -39,19 +39,28 @@ class group extends base {
 	 */
 	private function makeSubFields() {
 		$fields = array();
-		foreach($this->sub_fields as $field) {
-			$fields[] = $field->make_slug($this->slug)->make();
+		foreach ($this->sub_fields as $field) {
+			$fields[] = $field->make();
 		}
 		return $fields;
-    }
+	}
 
 	/**
 	 * creates field array
 	 */
-    public function make() {
+	public function make() {
 		$args = parent::make();
-        $args['sub_fields'] = $this->makeSubFields();
+		$args['sub_fields'] = $this->makeSubFields();
 		return $args;
+	}
+
+	public function make_key($salt) {
+		if (isset($this->sub_fields) && !empty($this->sub_fields)) {
+			foreach ($this->sub_fields as &$subfield) {
+				$subfield->make_key($salt);
+			}
+		}
+		return parent::make_key($salt);
 	}
 
 }
