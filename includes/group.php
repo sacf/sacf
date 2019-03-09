@@ -282,7 +282,7 @@ class group {
 		return $this;
 	}
 
-	// @todo create php like main acf is doing
+	// @todo create php export like acf is doing
 	public function export() {
 		$groups = $this->make();
 		var_dump($groups);

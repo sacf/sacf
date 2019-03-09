@@ -31,17 +31,21 @@ if (!class_exists('sacf')):
 			// define constant
 			if (!defined('SACF')) {
 				define('SACF', true);
+				define('SACF_VERSION', "2.0.0");
 			}
 
 			// field builder files
 			require_once 'includes/settings.php';
 			require_once 'includes/utils.php';
 			require_once 'includes/autoloader.php';
+			require_once "includes/upgrade.php";
 
 			// frontend functions
 			require_once 'api/class-templates.php';
 			require_once 'api/template.php';
 			require_once 'api/debug.php';
+
+			new \sacf\upgrade();
 
 			add_action('init', array($this, 'load_l10n'));
 			add_action('admin_menu', array($this, 'add_admin_menu'));
@@ -88,7 +92,7 @@ if (!class_exists('sacf')):
 			}
 			return true;
 		}
-    }
+	}
 
 	function sacf() {
 		global $sacf;
