@@ -208,6 +208,7 @@ class group {
 		// @todo @deprecated ???
 		$arr['menu_order'] = $this->defaults['menu_order'] ? $this->defaults['menu_order'] : self::$group_count;
 
+		do_action("sacf_after_group_make", $this->fields);
 		return wp_parse_args($arr, $this->defaults);
 	}
 
