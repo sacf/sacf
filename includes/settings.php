@@ -1,19 +1,27 @@
 <?php
-
 /**
  * Default settings
  *
+ * @package sacf\utils
+ * @version 2.0.0
  * @since 2.0.0
- * @package sacf
  */
 
 namespace sacf;
 
 class settings {
-	public static $paths = array();
 
-	// sets defaults paths
+	/**
+	 * Sets defaults path settings
+	 *
+	 * @return array The paths
+	 */
 	public static function paths() {
+		/**
+		 * Filter hook to change defaults paths
+		 *
+		 * @param array The paths array
+		 */
 		return apply_filters('sacf/paths', array(
 			'layouts' => get_theme_file_path('/includes/sacf-layouts/'),
 			'plugins' => get_theme_file_path('/includes/sacf-plugins/'),
@@ -22,8 +30,17 @@ class settings {
 		));
 	}
 
-	// set default settings for group and fields
+	/**
+	 * Set default settings for group and fields
+	 *
+	 * @return array The field layout settings
+	 */
 	public static function defaults() {
+		/**
+		 * Filter hook to change defaults field layout settings
+		 *
+		 * @param array The field array to change the default field settings
+		 */
 		return apply_filters('sacf/defaults', array(
 			'block' => array(
 				'category' => 'sacf',

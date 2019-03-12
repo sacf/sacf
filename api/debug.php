@@ -1,7 +1,14 @@
 <?php
 
 /**
- * hides the ACF admin menu
+ * Some helper debug functions
+ * @package sacf\api
+ */
+
+/**
+ * Hides the ACF and SACF admin menu
+ *
+ * @return void
  */
 function sacf_hide_admin() {
 	add_filter('sacf/show_admin', '__return_false');
@@ -9,33 +16,39 @@ function sacf_hide_admin() {
 }
 
 /**
- * shows all fields
- */
-function sacf_get_fields($id = null) {
-	echo '<pre>';
-	var_dump(get_fields($id));
-	echo '</pre>';
-}
-
-/**
- * shows all groups
+ * Returns an array containing all field groups
+ *
+ * @param boolean $all_groups (optional) Toggle between all ACF groups or only those registered via SACF
+ * @return array
  */
 function sacf_get_groups($all_groups = false) {
-	$groups = acf_get_field_groups();
-	echo '<pre>';
-	foreach ($groups as $group) {
+	$groups = [];
+	foreach (acf_get_field_groups() as $group) {
 		if (isset($group['local_sacf']) || $all_groups) {
-			var_dump($group);
+			$groups[] = $group;
 		}
 	}
+	return $groups;
+}
+
+/**
+ * Show all registered Groups
+ *
+ * @param boolean $all_groups (optional) Toggle between all ACF groups or only those registered via SACF
+ * @return void
+ */
+function sacf_debug_groups($all_groups = false) {
+	echo '<pre>';
+	var_dump(sacf_get_groups($all_groups));
 	echo '</pre>';
 }
 
 /**
- * shows all fields on page
+ * Shows all fields on a certain page within a group
  *
- * @param int $id The Post ID
- * @param string $group_id The field groups id
+ * @param int $id (optional) The Post ID
+ * @param string $group_id (optional) An optional field group id
+ * @return void
  */
 function sacf_debug_fields($id = null, $group_id = false) {
 	$fields = get_fields($id);
@@ -68,10 +81,11 @@ function sacf_debug_fields($id = null, $group_id = false) {
 }
 
 /**
- * shows all fields from a group
+ * Shows all fields from a group
  *
  * @param string $name The field groups name
- * @param int $id The Post ID
+ * @param int $id (optional) The Post ID
+ * @return void
  */
 function sacf_debug_fields_in_group($name, $id = null) {
 	sacf_debug_fields($id, \sacf\utils::key_group($name));

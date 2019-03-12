@@ -1,4 +1,9 @@
 <?php
+/**
+ * Some util functions
+ *
+ * @package sacf\utils
+ */
 
 namespace sacf;
 
@@ -135,7 +140,7 @@ class utils {
 		foreach ($public_methods as $method) {
 			if (!(
 				$method->getName() == '__construct' ||
-				$method->getName() == 'make_slug' ||
+				$method->getName() == 'make_key' ||
 				$method->getName() == 'make' ||
 				$method->getName() == 'get_key' ||
 				$method->getName() == 'help'

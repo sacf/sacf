@@ -3,7 +3,7 @@
  * Used to some things after a version update
  *
  * @since 2.0.0
- * @package sacf
+ * @package sacf\utils
  */
 
 namespace sacf;
@@ -12,8 +12,6 @@ class upgrade {
 
 	public function __construct() {
 		$dbVersion = get_option("sacf_version", null);
-
-		$upgraded = false;
 		if ($dbVersion === null) {
 			$this->maybeUpgrade("2.0.0");
 		} else if (version_compare($dbVersion, SACF_VERSION) < 0) {

@@ -3,6 +3,7 @@
 /**
  * The base field to extend from
  * @version 2.0.0
+ * @package sacf\fields
  */
 
 namespace sacf\field;

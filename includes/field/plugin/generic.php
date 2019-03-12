@@ -3,6 +3,7 @@
 /**
  * A generic plugin field
  * @version 2.0.0
+ * @package sacf\fields\plugins
  */
 
 namespace sacf\field\plugin;
@@ -11,9 +12,9 @@ use sacf\field\base as base;
 
 class generic extends base {
 
-	public function __construct($label, $name=false, $type, $options=array()) {
+	public function __construct($label, $name = false, $type, $options = array()) {
 		parent::__construct($label, $name, $type);
-        $this->options = $options;
+		$this->options = $options;
 	}
 
 	/**
@@ -22,6 +23,6 @@ class generic extends base {
 	public function options($options) {
 		$this->options = $options;
 		return $this;
-    }
+	}
 
 }

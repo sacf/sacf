@@ -23,7 +23,7 @@ if (!class_exists('sacf')):
 
 		public function initialize() {
 
-			// warn and bail on missing ACF
+			// warns and bails on missing ACF
 			if (!$this->acf_check()) {
 				return;
 			}
@@ -35,24 +35,24 @@ if (!class_exists('sacf')):
 			}
 
 			// field builder files
+			require_once 'includes/autoloader.php';
 			require_once 'includes/settings.php';
 			require_once 'includes/utils.php';
-			require_once 'includes/autoloader.php';
 			require_once "includes/upgrade.php";
+			new \sacf\upgrade();
 
 			// frontend functions
 			require_once 'api/class-templates.php';
 			require_once 'api/template.php';
 			require_once 'api/debug.php';
 
-			new \sacf\upgrade();
-
-			add_action('init', array($this, 'load_l10n'));
+			// i18n is not necessary yet
+			// add_action('init', array($this, 'load_l10n'));
 			add_action('admin_menu', array($this, 'add_admin_menu'));
 		}
 
 		/**
-		 * Loads i18n files for theme
+		 * Loads i18n files
 		 * @return void
 		 */
 		public function load_l10n() {
@@ -80,7 +80,11 @@ if (!class_exists('sacf')):
 			);
 		}
 
-		// checks for existing ACF
+		/**
+		 * Checks for existing ACF
+		 *
+		 * @return bool
+		 */
 		private function acf_check() {
 			if (!defined('ACF')) {
 				add_action('admin_notices', function () {
@@ -94,6 +98,10 @@ if (!class_exists('sacf')):
 		}
 	}
 
+	/**
+	 * Initialized SACF
+	 * @return sacf
+	 */
 	function sacf() {
 		global $sacf;
 		if (!isset($sacf)) {
