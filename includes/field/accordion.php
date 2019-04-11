@@ -40,7 +40,7 @@ class accordion extends base {
 	 * @return void
 	 */
 	public function open($bool = true) {
-		$this->options['open'] = $bool;
+		$this->options['open'] = $openOnPageLoad;
 		return $this;
 	}
 
@@ -50,8 +50,8 @@ class accordion extends base {
 	 * @param boolean $bool can be open while others are
 	 * @return void
 	 */
-	public function multi_expand($bool = true) {
-		$this->options['multi_expand'] = $bool;
+	public function multi_expand($multiOpen = true) {
+		$this->options['multi_expand'] = $multiOpen;
 		return $this;
 	}
 
