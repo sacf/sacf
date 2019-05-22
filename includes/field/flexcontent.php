@@ -1,42 +1,83 @@
 <?php
 
 /**
- * Field: Flexible Content
+ * File: Flexible Content
+ * 
+ * @package sacf\fields
+ * @since 2.0.0
  * @version 2.0.0
+ * 
  */
 
 namespace sacf\field;
 
+/**
+ * Field: Flexible Content - sort fields in layouts, that can be used flexibly
+ */
 class flexcontent extends base {
 
+	/**
+	 * subfields of this field
+	 *
+	 * @var array
+	 */
+	private $sub_fields = array();
+
+	/**
+	 * layouts of this field
+	 *
+	 * @var array
+	 */
+	private $layouts = array();
+	/**
+	 * default values
+	 *
+	 * @var array
+	 */
 	protected $defaults = array(
 		'min' => '',
 		'max' => '',
 		'button_label' => 'Add Module',
 	);
-	private $sub_fields = array();
-	private $layouts = array();
+	
 
+	/**
+	 * Constructor method
+	 *
+	 * @param string $label Label for this field
+	 * @param String $name Name for this field (optional - sanitized label if empty)<br>Used in <code>get_field('field_name')</code>
+	 */
 	public function __construct($label, $name = false) {
 		parent::__construct($label, $name, 'flexible_content');
 	}
 
 	/**
-	 * @help: set button label as string
+	 * set button label
+	 *
+	 * @param string $string the "add layout" button label
+	 * @return void
 	 */
 	public function button_label($string) {
 		$this->options['button_label'] = $string;
 		return $this;
 	}
+	
 	/**
-	 * @help: set minimum rows as int
+	 * set minimum amount of rwos
+	 *
+	 * @param int $int minimum amount of rows
+	 * @return void
 	 */
 	public function min($int) {
 		$this->options['min'] = $int;
 		return $this;
 	}
+	
 	/**
-	 * @help: set maximum rows as int
+	 * set maximum amount of rwos
+	 *
+	 * @param int $int maximum amount of rows
+	 * @return void
 	 */
 	public function max($int) {
 		$this->options['max'] = $int;
@@ -46,6 +87,17 @@ class flexcontent extends base {
 	/**
 	 * @help: add a flexibel content layout: addLayout('label', 'layout_name', 'display', 'min', 'max')
 	 */
+
+	/**
+	 * add a flexible content layout
+	 *
+	 * @param flexcontentlayout | string $label string or flexcontenlayout object
+	 * @param boolean $name Name for this layout (optional - sanitized label if empty)<br>Returned by<code>get_row_layout()</code>
+	 * @param string $display <code>block</code><br><code>table</<code><br><code>row</<code>
+	 * @param string $min minimum amount of rows of this layout
+	 * @param string $max maximum amount of rows of this layout
+	 * @return void
+	 */
 	public function add_layout($label, $name = false, $display = 'block', $min = '', $max = '') {
 		if (($label instanceof \sacf\flexcontentlayout)) {
 			$this->buildLayoutFromClass($label);
@@ -54,14 +106,30 @@ class flexcontent extends base {
 		}
 		return $this;
 	}
+	
 	/**
-	 * @help: add a field to a layout: add($field_var, 'layout_name')
+	 * add a field to a layout: add($field_var, 'layout_name')
+	 *
+	 * @param object $field the field to add
+	 * @param string $name the layout to add it to
+	 * @return void
 	 */
 	public function add($field, $name) {
 		$this->sub_fields[$name]['fields'][] = $field;
 		return $this;
 	}
 
+	/**
+	 * build a layout from parameters
+	 *
+	 * @param string $label label of the layout
+	 * @param string $name Name for this layout (optional - sanitized label if empty)<br>Returned by<code>get_row_layout()</code>
+	 * @param string $display <code>block</code><br><code>table</<code><br><code>row</<code>
+	 * @param int $min minimum amount of rows of this layout
+	 * @param int $max maximum amount of rows of this layout
+	 * @todo shouldn't the name be build from label if false? 
+	 * @return void
+	 */
 	private function buildLayoutFromParameters($label, $name, $display, $min, $max) {
 		$this->sub_fields[$name]['label'] = $label;
 		$this->sub_fields[$name]['name'] = $name;
@@ -71,7 +139,13 @@ class flexcontent extends base {
 		$this->sub_fields[$name]['max'] = $max;
 	}
 
-	// create layout from class \sacf\flexcontentlayout
+
+	/**
+	 * create a layout from class \sacf\flexcontentlayout
+	 *
+	 * @param flexcontentlayout $layout
+	 * @return void
+	 */
 	private function buildLayoutFromClass($layout) {
 		// add flexcontent layout
 		$this->buildLayoutFromParameters($layout->label, $layout->name, $layout->display, $layout->min, $layout->max);
@@ -96,7 +170,9 @@ class flexcontent extends base {
 	}
 
 	/**
-	 * creates sub fields array for repeater
+	 * create sub fields array for repeater
+	 *
+	 * @return void
 	 */
 	private function makeSubFields() {
 		$layouts = array();
@@ -115,7 +191,9 @@ class flexcontent extends base {
 	}
 
 	/**
-	 * creates field array
+	 * create fields array
+	 *
+	 * @return void
 	 */
 	public function make() {
 		$args = parent::make();
@@ -123,6 +201,12 @@ class flexcontent extends base {
 		return $args;
 	}
 
+	/**
+	 * create keys for subfields 
+	 *
+	 * @param string $salt salt from parent
+	 * @return void
+	 */
 	public function make_key($salt) {
 		if (isset($this->sub_fields) && !empty($this->sub_fields)) {
 			foreach ($this->sub_fields as &$layout) {

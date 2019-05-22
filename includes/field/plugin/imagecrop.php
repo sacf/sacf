@@ -3,14 +3,23 @@
 /**
  * Image Crop Add-on
  * @source https://github.com/andersthorborg/ACF-Image-Crop
+ * @since 2.0.0
  * @version 2.0.0
  * @package sacf\fields\plugins
  */
 
 namespace sacf\field\plugin;
 
+/**
+ * Plugin Field: Image Crop
+ */
 class imagecrop extends generic {
 
+	/**
+	 * default values
+	 *
+	 * @var array
+	 */
 	protected $defaults = array(
 		'crop_type' => 'hard',
 		'target_size' => 'thumbnail',
@@ -24,12 +33,21 @@ class imagecrop extends generic {
 		'library' => 'all',
 	);
 
+	/**
+	 * Constructor method
+	 *
+	 * @param string $label Label for this field
+	 * @param string $name Name for this field (optional - sanitized label if empty)<br>Used in <code>get_field('field_name')</code>
+	 */
 	public function __construct($label, $name = false) {
 		parent::__construct($label, $name, 'image_crop');
 	}
 
 	/**
-	 * @help: set the crop-type: hard, min
+	 * set crop-type
+	 *
+	 * @param string $string <code>hard</code>, <code>min</code>
+	 * @return void
 	 */
 	public function crop_type($string) {
 		$this->options['crop_type'] = $string;
@@ -37,7 +55,10 @@ class imagecrop extends generic {
 	}
 
 	/**
-	 * @help: set the target-size: thumbnail sizes ar availible, or "custom". if custom is selected, width and height need to be set.
+	 * set the target size
+	 *
+	 * @param string $string thumbnail sizes ar availible, or "custom". if custom is selected, width and height need to be set.
+	 * @return void
 	 */
 	public function target_size($string) {
 		$this->options['target_size'] = $string;
@@ -45,14 +66,21 @@ class imagecrop extends generic {
 	}
 
 	/**
-	 * @help: restricts file dimensions in px
+	 * restrict file width in px
+	 *
+	 * @param int $int max width in px
+	 * @return void
 	 */
 	public function width($int) {
 		$this->options['width'] = $int;
 		return $this;
 	}
+	
 	/**
-	 * @help: restricts file dimensions in px
+	 * restrict file height in px
+	 *
+	 * @param int $int max height in px
+	 * @return void
 	 */
 	public function height($int) {
 		$this->options['height'] = $int;
@@ -60,7 +88,10 @@ class imagecrop extends generic {
 	}
 
 	/**
-	 * @help: sets the preview size for backend view: thumbnail, medium, large, full ...
+	 * set the preview size for backend view
+	 *
+	 * @param string $string <code>thumbnail</code>, <code>medium</code>, <code>large</code>, <code>full</code>...
+	 * @return void
 	 */
 	public function preview_size($string) {
 		$this->options['preview_size'] = $string;
@@ -68,7 +99,10 @@ class imagecrop extends generic {
 	}
 
 	/**
-	 * @help: set force-crop: yes, no -> opens crop on selection
+	 * set force-crop: yes, no -> opens crop on selection
+	 *
+	 * @param string $string <code>yes</code> or <code>no</code>
+	 * @return void
 	 */
 	public function force_crop($string = 'yes') {
 		$this->options['force_crop'] = $string;
@@ -76,7 +110,10 @@ class imagecrop extends generic {
 	}
 
 	/**
-	 * @help: save extra image: yes, no - if no, only url is available as return_format
+	 * save an extra image. if no, only url is available as return_format
+	 *
+	 * @param string $string <code>yes</code> or <code>no</code>
+	 * @return void
 	 */
 	public function save_in_media_library($string) {
 		$this->options['save_in_media_library'] = $string;
@@ -84,7 +121,10 @@ class imagecrop extends generic {
 	}
 
 	/**
-	 * @help: save extra image: yes, no - should be activated if a retina plugin is active, e.g. WP Retina 2x
+	 * save a retina image - should be activated if a retina plugin is active, e.g. WP Retina 2x
+	 *
+	 * @param string $string <code>yes</code> or <code>no</code>
+	 * @return void
 	 */
 	public function retina_mode($string = 'yes') {
 		$this->options['retina_mode'] = $string;
@@ -92,7 +132,10 @@ class imagecrop extends generic {
 	}
 
 	/**
-	 * @help: sets return format: array, url, id
+	 * Specify the return format on front end
+	 *
+	 * @param string $string <code>array</code>, <code>url</code> or <code>id</code>
+	 * @return void
 	 */
 	public function save_format($string) {
 		$this->options['save_format'] = $string;
@@ -100,7 +143,10 @@ class imagecrop extends generic {
 	}
 
 	/**
-	 * @help: sets return format: all, uploadedTo
+	 * Limit the media library choice
+	 *
+	 * @param String $string <code>all</code> or <code>uploadedTo</code>
+	 * @return void
 	 */
 	public function library($string) {
 		$this->options['library'] = $string;

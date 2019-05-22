@@ -1,32 +1,52 @@
 <?php
 
 /**
- * Select field: Taxonomy
+ * File: Taxonomy
+ * 
+ * @package sacf\fields
+ * @since 2.0.0
  * @version 2.0.0
+ * 
  */
 
 namespace sacf\field;
 
+/**
+ * Select Field: Taxonomy
+ */
 class taxonomy extends base {
+	
+	/**
+	 * default values
+	 *
+	 * @var array
+	 */
+	protected $defaults = array(
+		'taxonomy' => 'category',
+		'field_type' => 'checkbox',
+		'allow_null' => 0,
+		'add_term' => 0,
+		'save_terms' => 0,
+		'load_terms' => 0,
+		'return_format' => 'object',
+		'multiple' => 0,
+	);
 
-    protected $defaults = array(
-            'taxonomy' => 'category',
-            'field_type' => 'checkbox',
-            'allow_null' => 0,
-            'add_term' => 0,
-            'save_terms' => 0,
-            'load_terms' => 0,
-            'return_format' => 'object',
-            'multiple' => 0
-        );
-
-	public function __construct($label, $name=false) {
+	/**
+	 * Constructor method
+	 *
+	 * @param string $label Label for this field
+	 * @param string $name Name for this field (optional - sanitized label if empty)<br>Used in <code>get_field('field_name')</code>
+	 */
+	public function __construct($label, $name = false) {
 		parent::__construct($label, $name, 'taxonomy');
 	}
 
-
 	/**
-	 * @help: sets the taxonomy to be displayed: category, post_tag, post_format
+	 * set the taxonomy to be displayed
+	 *
+	 * @param [type] $string <code>category</code>, <code>post_tag</code>, <code>post_format</code>
+	 * @return void
 	 */
 	public function taxonomy($string) {
 		$this->options['taxonomy'] = $string;
@@ -35,46 +55,78 @@ class taxonomy extends base {
 	/**
 	 * @help: sets appearance of this field: checkbox, multi_select, radio, select
 	 */
+
+	/**
+	 * set the appearance of this field
+	 *
+	 * @param string $string <code>checkbox</code>, <code>multi_select</code>, <code>radio</code> or <code>select</code>
+	 * @return void
+	 */
 	public function field_type($string) {
 		$this->options['field_type'] = $string;
 		return $this;
 	}
+	
 	/**
-	 * @help: allow null: 0, 1
+	 * allow null
+	 *
+	 * @param integer $bool
+	 * @return void
 	 */
 	public function allow_null($bool = 1) {
 		$this->options['allow_null'] = $bool;
 		return $this;
 	}
+
 	/**
-	 * @help: allow new terms to be created whilst editing: 0, 1
+	 * allow new terms to be created whilst editing
+	 *
+	 * @param integer $bool
+	 * @return void
 	 */
 	public function add_term($bool = 1) {
 		$this->options['add_term'] = $bool;
 		return $this;
-	}/**
-	 * @help: connect selected terms to the post: 0, 1
+	}
+
+	/**
+	 * connect selected terms to the post
+	 *
+	 * @param integer $bool
+	 * @return void
 	 */
 	public function save_terms($bool = 1) {
 		$this->options['save_terms'] = $bool;
 		return $this;
 	}
+
 	/**
-	 * @help: load value from posts terms: 0, 1
+	 * load value from posts terms
+	 *
+	 * @param integer $bool
+	 * @return void
 	 */
 	public function load_terms($bool = 1) {
 		$this->options['load_terms'] = $bool;
 		return $this;
 	}
+
 	/**
-	 * @help: sets return format: object, id
+	 * Specify the return format on front end
+	 *
+	 * @param string $string <code>object</code> or <code>id</code>
+	 * @return void
 	 */
 	public function return_format($string) {
 		$this->options['return_format'] = $string;
 		return $this;
 	}
+	
 	/**
-	 * @help: allow multiple selections: 0, 1
+	 * allow multiple selections
+	 *
+	 * @param integer $bool
+	 * @return void
 	 */
 	public function multiple($bool = 1) {
 		$this->options['multiple'] = $bool;

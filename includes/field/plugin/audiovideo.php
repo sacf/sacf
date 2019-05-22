@@ -3,14 +3,23 @@
 /**
  * HTML 5 Audio/Video Field
  * @source https://github.com/ipsips/acf-audio-video
+ * @since 2.0.0
  * @version 2.0.0
  * @package sacf\fields\plugins
  */
 
 namespace sacf\field\plugin;
 
+/**
+ * Select Field: Audio / Video
+ */
 class audiovideo extends generic {
 
+	/**
+	 * default values
+	 *
+	 * @var array
+	 */
 	protected $defaults = array(
 		'library' => 'all',
 		'general_type' => 'both',
@@ -20,12 +29,21 @@ class audiovideo extends generic {
 		'return_format' => 'html',
 	);
 
+	/**
+	 * Constructor method
+	 *
+	 * @param string $label Label for this field
+	 * @param string $name Name for this field (optional - sanitized label if empty)<br>Used in <code>get_field('field_name')</code>
+	 */
 	public function __construct($label, $name = false) {
 		parent::__construct($label, $name, 'audioVideo');
 	}
 
 	/**
-	 * @help: sets which sources are allowed: all | uploadedTo
+	 * set which sources are allowed
+	 *
+	 * @param string $string <code>all</code> or <code>uploadedTo</code>
+	 * @return void
 	 */
 	public function library($string = 'uploadedTo') {
 		$this->options['library'] = $string;
@@ -33,7 +51,10 @@ class audiovideo extends generic {
 	}
 
 	/**
-	 * @help: which type is allowed: both | video | audio
+	 * which type of media is allowed
+	 *
+	 * @param string $string <code>both</code>, <code>video</code>, <code>audio</code>
+	 * @return void
 	 */
 	public function general_type($string) {
 		$this->options['general_types'] = $string;
@@ -41,7 +62,10 @@ class audiovideo extends generic {
 	}
 
 	/**
-	 * @help: sets which sources are allowed, comma seperated: mp3, mp4, mov ...
+	 * comma seperated list of allowed file types
+	 *
+	 * @param string $string e.g. <code>mp3, mp4, mov</code>
+	 * @return void
 	 */
 	public function allowed_types($string = '') {
 		$this->options['allowed_types'] = $string;
@@ -49,7 +73,10 @@ class audiovideo extends generic {
 	}
 
 	/**
-	 * @help: sets min file size as int in MB
+	 * set minimum file size in MB
+	 *
+	 * @param int $int min file size
+	 * @return void
 	 */
 	public function min_size($int) {
 		$this->options['min_size'] = $int;
@@ -57,7 +84,10 @@ class audiovideo extends generic {
 	}
 
 	/**
-	 * @help: sets max file size as int in MB
+	 * set maximum file size in MB
+	 *
+	 * @param int $int max file size
+	 * @return void
 	 */
 	public function max_size($int) {
 		$this->options['max_size'] = $int;
@@ -65,7 +95,10 @@ class audiovideo extends generic {
 	}
 
 	/**
-	 * @help: sets return format: html | array | shortcode
+	 * set return format
+	 *
+	 * @param string $string <code>html</code>, <code>array</code>, <code>shortcode</code>
+	 * @return void
 	 */
 	public function return_format($string = 'array') {
 		$this->options['return_format'] = $string;

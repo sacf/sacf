@@ -1,34 +1,59 @@
 <?php
 
 /**
- * Layout field: Tab
+ * File: Tab
+ * 
+ * @package sacf\fields
+ * @since 2.0.0
  * @version 2.0.0
+ * 
  */
 
 namespace sacf\field;
 
+/**
+ * Layout Field: Tab
+ */
 class tab extends Base {
 
+	/**
+	 * default values
+	 *
+	 * @var array
+	 */
 	protected $defaults = array(
-            'placement' => 'top',
-            'endpoint' => 0,
-        );
+		'placement' => 'top',
+		'endpoint' => 0,
+	);
 
-	public function __construct($label, $name=false) {
+	/**
+	 * Constructor method
+	 *
+	 * @param string $label Label for this field
+	 * @param string $name Name for this field (optional - sanitized label if empty)<br>Used in <code>get_field('field_name')</code>
+	 */
+	public function __construct($label, $name = false) {
 		parent::__construct($label, $name, 'tab');
 	}
 
 	/**
-	 * @help: set tab placement: top, left
+	 * set tab placement
+	 *
+	 * @param string $string <code>top</code>, <code>left</code>
+	 * @return void
 	 */
 	public function placement($string = 'left') {
 		$this->options['placement'] = $string;
 		return $this;
-    }
+	}
 
-    /**
-	 * @help:
-     * // @todo
+
+	/**
+	 * set endpoint for this tab? 
+	 *
+	 * @param boolean $bool
+	 * @return void
+	 * @todo what does this do? 
 	 */
 	public function endpoint($bool = true) {
 		$this->options['endpoint'] = $bool;

@@ -1,59 +1,88 @@
 <?php
 
+/**
+ * File: E-Mail
+ * 
+ * @package sacf\fields
+ * @since 2.0.0
+ * @version 2.0.0
+ * 
+ */
+
 namespace sacf\field;
 
+/**
+ * Input Field: E-Mail
+ */
 class email extends base {
 
-	public $default_value 	= "";
-	public $placeholder 	= "";
-	public $prepend 		= "";
-	public $append 			= "";
+	/**
+	 * default values
+	 *
+	 * @var array
+	 */
+	protected $defaults = array(
+		'default_value' => '',
+		'placeholder' => '',
+		'prepend' => '',
+		'append' => ''
+	);
 
-	public function __construct($label, $name=false) {
+	/**
+	 * Constructor method
+	 *
+	 * @param string $label Label for this field
+	 * @param string $name Name for this field (optional - sanitized label if empty)<br>Used in <code>get_field('field_name')</code>
+	 */
+	public function __construct($label, $name = false) {
 		parent::__construct($label, $name);
 		$this->type = "email";
 		$this->class = "email";
 	}
+
 	/**
-	 * @help: set a default text
+	 * set a default text
+	 *
+	 * @param string $string default text
+	 * @return void
 	 */
 	public function default_value($string) {
 		$this->default_value = $string;
 		return $this;
 	}
+	
 	/**
-	 * @help: set placeholder text
+	 * set placeholder text
+	 *
+	 * @param string $string placeholder
+	 * @return void
 	 */
 	public function placeholder($string) {
 		$this->placeholder = $string;
 		return $this;
 	}
+
 	/**
-	 * @help: prepend text to input field
+	 * prepend text to input field
+	 *
+	 * @param string $string text to prepend
+	 * @return void
 	 */
 	public function prepend($string) {
 		$this->prepend = $string;
 		return $this;
 	}
+	
 	/**
-	 * @help: append text to input field
+	 * append text to input field
+	 *
+	 * @param string $string text to append
+	 * @return void
 	 */
 	public function append($string) {
 		$this->append = $string;
 		return $this;
 	}
 
-
-	/**
-	 * creates field array
-	 */
-	public function make() {
-		$arr = parent::make();
-		$arr['default_value'] = $this->default_value;
-		$arr['placeholder'] = $this->placeholder;
-		$arr['prepend'] = $this->prepend;
-		$arr['append'] = $this->append;
-		return $arr;
-	}
 
 }
