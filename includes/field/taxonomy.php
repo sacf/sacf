@@ -3,7 +3,7 @@
 /**
  * File: Taxonomy
  * 
- * @package sacf\fields
+ * @package sacf/fields
  * @since 2.0.0
  * @version 2.0.0
  * 
@@ -16,12 +16,7 @@ namespace sacf\field;
  */
 class taxonomy extends base {
 	
-	/**
-	 * default values
-	 *
-	 * @var array
-	 */
-	protected $defaults = array(
+	protected $defaults = array( 
 		'taxonomy' => 'category',
 		'field_type' => 'checkbox',
 		'allow_null' => 0,
@@ -30,7 +25,7 @@ class taxonomy extends base {
 		'load_terms' => 0,
 		'return_format' => 'object',
 		'multiple' => 0,
-	);
+	); ///< defaults
 
 	/**
 	 * Constructor method
@@ -45,16 +40,13 @@ class taxonomy extends base {
 	/**
 	 * set the taxonomy to be displayed
 	 *
-	 * @param [type] $string <code>category</code>, <code>post_tag</code>, <code>post_format</code>
+	 * @param string $string <code>category</code>, <code>post_tag</code>, <code>post_format</code>
 	 * @return void
 	 */
 	public function taxonomy($string) {
 		$this->options['taxonomy'] = $string;
 		return $this;
 	}
-	/**
-	 * @help: sets appearance of this field: checkbox, multi_select, radio, select
-	 */
 
 	/**
 	 * set the appearance of this field

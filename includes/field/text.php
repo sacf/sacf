@@ -3,7 +3,7 @@
 /**
  * File: Text
  *
- * @package sacf\fields
+ * @package sacf/fields
  * @since 2.0.0
  * @version 2.0.0
  *
@@ -16,12 +16,7 @@ namespace sacf\field;
  */
 class text extends base {
 
-	/**
-	 * default values
-	 *
-	 * @var array
-	 */
-	protected $defaults = array(
+	protected $defaults = array( 
 		'default_value' => '',
 		'placeholder' => '',
 		'prepend' => '',
@@ -29,7 +24,7 @@ class text extends base {
 		'maxlength' => '',
 		'readonly' => 0,
 		'disabled' => 0,
-	);
+	); ///< defaults
 
 	/**
 	 * Constructor method

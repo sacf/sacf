@@ -3,7 +3,7 @@
 /**
  * File: Google Map
  *
- * @package sacf\fields
+ * @package sacf/fields
  * @since 2.0.0
  * @version 2.0.0
  */
@@ -15,17 +15,12 @@ namespace sacf\field;
  */
 class googlemap extends Base {
 
-	/**
-	 * default values
-	 *
-	 * @var array
-	 */
 	protected $defaults = array(
 		'center_lat' => '',
 		'center_lng' => '',
 		'zoom' => '',
 		'height' => '',
-	);
+	); ///< defaults
 
 	/**
 	 * Constructor method

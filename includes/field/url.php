@@ -3,7 +3,7 @@
 /**
  * File: url
  *
- * @package sacf\fields
+ * @package sacf/fields
  * @since 2.0.0
  * @version 2.0.0
  * @todo allow boolean values in different formats?
@@ -17,15 +17,10 @@ namespace sacf\field;
  */
 class url extends base {
 
-	/**
-	 * default values
-	 *
-	 * @var array
-	 */
-	protected $defaults = array(
+	protected $defaults = array( 
 		'default_value' => '',
 		'placeholder' => '',
-	);
+	); ///< defaults
 
 	/**
 	 * Constructor method

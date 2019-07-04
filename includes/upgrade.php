@@ -1,15 +1,21 @@
 <?php
 /**
- * Used to some things after a version update
+ * Used to do some things after a version update
  *
  * @since 2.0.0
- * @package sacf\utils
+ * @package sacf/utils
  */
 
 namespace sacf;
 
+/**
+ * updgrade: change changed things.
+ */
 class upgrade {
 
+	/**
+	 * constructor function
+	 */
 	public function __construct() {
 		$dbVersion = get_option("sacf_version", null);
 		if ($dbVersion === null) {
@@ -19,6 +25,14 @@ class upgrade {
 		}
 	}
 
+	/**
+	 * add an admin notice 
+	 *
+	 * @param string $text text to show
+	 * @param string $button a button string
+	 * @param boolean $dismissable is it dismissable
+	 * @return void
+	 */
 	private static function adminNotice($text, $button = false, $dismissable = null) {
 		if (is_null($dismissable)) {
 			$dismissable = $button !== false;
@@ -32,6 +46,12 @@ class upgrade {
 		echo '</div>';
 	}
 
+	/**
+	 * maybe we want to upgrade
+	 *
+	 * @param string $v version
+	 * @return void
+	 */
 	private function maybeUpgrade($v) {
 		if ($v === "2.0.0") {
 			if (isset($_GET["sacf_upgrade_db"]) && boolval($_GET["sacf_upgrade_db"])) {
@@ -47,11 +67,23 @@ class upgrade {
 		}
 	}
 
+	/**
+	 * upgrade old keys in the database
+	 *
+	 * @return void
+	 */
 	public static function oldStyleKeyUpgradeNotice() {
 		$button = '<a href="?sacf_upgrade_db=true" class="button button-primary">' . __('Upgrade database', 'sacf') . '</a>';
 		self::adminNotice(__('Thank you for updating SACF, click this button to upgrade the database:', 'sacf'), $button, false);
 	}
 
+	/**
+	 * Recursive function to unpack fields
+	 *
+	 * @param array $arr fields to unpack
+	 * @param array $ret array of fields from a previous unpacking
+	 * @return void
+	 */
 	private static function unpack($arr, $ret = []) {
 
 		foreach ($arr as $k => $field) {
@@ -74,6 +106,12 @@ class upgrade {
 		return $ret;
 	}
 
+	/**
+	 * fix old keys 
+	 *
+	 * @param array $fields an array of fields
+	 * @return void
+	 */
 	public static function fixOldStyleKeys($fields) {
 		if (gettype($fields) === "array") {
 			$fields = self::unpack($fields, []);

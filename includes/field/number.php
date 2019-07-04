@@ -3,7 +3,7 @@
 /**
  * File: Number
  * 
- * @package sacf\fields
+ * @package sacf/fields
  * @since 2.0.0
  * @version 2.0.0
  * @todo min / max / steps as float? 
@@ -17,17 +17,12 @@ namespace sacf\field;
 
 class number extends text {
 
-	/**
-	 * default values
-	 *
-	 * @var array
-	 */
 	protected $defaults = array(
 		'min' => '',
 		'max' => '',
 		'step' => '',
 		'default_value' => '',
-	);
+	); ///< defaults
 
 	/**
 	 * Constructor method

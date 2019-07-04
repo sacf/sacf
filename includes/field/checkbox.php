@@ -3,7 +3,7 @@
 /**
  * File: Checkbox
  * 
- * @package sacf\fields
+ * @package sacf/fields
  * @since 2.0.0
  * @version 2.0.0
  * 
@@ -15,11 +15,7 @@ namespace sacf\field;
  * Field: Checkbox - on or more checkboxes
  */
 class checkbox extends base {
-	/**
-	 * defaults
-	 *
-	 * @var array
-	 */
+
 
 	protected $defaults = array(
 		'choices' => array(),
@@ -29,7 +25,7 @@ class checkbox extends base {
 		'toggle' => 0,
 		'return_format' => 'value',
 		'save_custom' => 0,
-	);
+	);  ///< defaults
 
 	/**
 	 * Constructor method

@@ -3,7 +3,7 @@
 /**
  * File: truefalse
  *
- * @package sacf\fields
+ * @package sacf/fields
  * @since 2.0.0
  * @version 2.0.0
  * @todo allow boolean values in different formats?
@@ -17,18 +17,13 @@ namespace sacf\field;
  */
 class truefalse extends base {
 	
-	/**
-	 * default values
-	 *
-	 * @var array
-	 */
-	protected $defaults = array(
+	protected $defaults = array( 
 		'message' => '',
 		'default_value' => 0,
 		'ui' => 0,
 		'ui_on_text' => '',
 		'ui_off_text' => '',
-	);
+	); ///< defaults
 
 	/**
 	 * Constructor method

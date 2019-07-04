@@ -1,28 +1,29 @@
 <?php
 /**
  * Creates a new flex_content layout module for easier reuse
- *
+ * `(new FlexContentModule('mce'))->add(new ACF/Wysiwyg('Text', 'module_mce_text')));`
+ * Extend class to create reusable files
+ * 
  * @version 2.0.0
  * @since 1.3.0
  * @package sacf
- *
- * @example (new FlexContentModule('mce'))->add(new ACF/Wysiwyg('Text', 'module_mce_text')));
- * @example Extend class to create reusable files
  */
 
 namespace sacf;
 
+/**
+ * flexcontentlayout
+ */
 class flexcontentlayout {
 
-	public $label = '';
-	public $name = '';
-	public $key = '';
-	public $display = '';
-	public $min = '';
-	public $max = '';
-
-	public $fields = array();
-	public $fields_options = array();
+	public $label = ''; ///< label
+	public $name = ''; ///< name
+	public $key = ''; ///< key
+	public $display = ''; ///< display
+	public $min = ''; ///< min
+	public $max = ''; ///< max
+	public $fields = array(); ///< fields
+	public $fields_options = array(); ///< field options
 
 	/**
 	 * Creates a reusable layout module for FlexContent
@@ -32,7 +33,7 @@ class flexcontentlayout {
 	 * @param string $display How to display the layout
 	 * @param string $min Use module minimum times
 	 * @param string $max Use module maximum times
-	 * @return sacf\flexcontentlayout
+	 * @return sacf\\flexcontentlayout 
 	 */
 	public function __construct($label, $name = false, $display = 'row', $min = '', $max = '') {
 		$this->label = $label;
@@ -47,8 +48,8 @@ class flexcontentlayout {
 	/**
 	 * Adds a new field
 	 *
-	 * @param sacf\field\base $field A SACF field
-	 * @return sacf\flexcontentlayout
+	 * @param sacf\\field\\base $field A SACF field
+	 * @return sacf\\flexcontentlayout
 	 */
 	public function add($field) {
 		$this->fields[] = $field;
@@ -58,8 +59,8 @@ class flexcontentlayout {
 	/**
 	 * Adds a new field as option (shows up in new tab)
 	 *
-	 * @param sacf\field\base $field A SACF field
-	 * @return sacf\flexcontentlayout
+	 * @param sacf\\field\\base $field A SACF field
+	 * @return sacf\\flexcontentlayout
 	 */
 	public function add_option($field) {
 		$this->fields_options[] = $field;

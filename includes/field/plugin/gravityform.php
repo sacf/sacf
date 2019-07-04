@@ -2,29 +2,25 @@
 
 /**
  * GravityForms Field
- * @source https://wordpress.org/plugins/acf-gravityforms-add-on/
+ * 
  * @since 2.0.0
  * @version 2.0.0
- * @package sacf\fields\plugins
+ * @package sacf/fields/plugins
  */
 
 namespace sacf\field\plugin;
 
 /**
- * Plugin Field: gravityform
+ * Plugin Field: gravityform  
+ * https://wordpress.org/plugins/acf-gravityforms-add-on/
  */
 class gravityform extends generic {
 
-	/**
-	 * default values
-	 *
-	 * @var array
-	 */
 	protected $defaults = array(
 		'return_format' => 'post_object',
 		'allow_null' => 0,
 		'multiple' => 0,
-	);
+	);  ///< defaults
 
 	/**
 	 * Constructor method

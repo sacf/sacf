@@ -2,7 +2,7 @@
 
 /**
  * Some helper debug functions
- * @package sacf\api
+ * @package sacf/api
  */
 
 /**

@@ -3,7 +3,7 @@
 /**
  * File: Wysiwyg
  *
- * @package sacf\fields
+ * @package sacf/fields
  * @since 2.0.0
  * @version 2.0.0
  *
@@ -17,17 +17,12 @@ namespace sacf\field;
 
 class wysiwyg extends base {
 
-	/**
-	 * default values
-	 *
-	 * @var array
-	 */
-	protected $defaults = array(
+	protected $defaults = array( 
 		'default_value' => '',
 		'tabs' => 'all',
 		'toolbar' => 'full',
 		'media_upload' => 1,
-	);
+	); ///< defaults
 
 	/**
 	 * Constructor method
@@ -64,7 +59,7 @@ class wysiwyg extends base {
 	/**
 	 * set a toolbar
 	 *
-	 * @param string $string <code>full, <code>basic</code>, (or a custom made one eg: <code>minimal</code>)
+	 * @param string $string <code>full</code>, <code>basic</code>, (or a custom made one eg: <code>minimal</code>)
 	 * @return void
 	 */
 	public function toolbar($string = 'basic') {

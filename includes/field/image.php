@@ -3,7 +3,7 @@
 /**
  * File: Image
  *
- * @package sacf\fields
+ * @package sacf/fields
  * @since 2.0.0
  * @version 2.0.0
  */
@@ -15,11 +15,6 @@ namespace sacf\field;
  */
 class image extends base {
 
-	/**
-	 * default values
-	 *
-	 * @var array
-	 */
 	protected $defaults = array(
 		'return_format' => 'array',
 		'preview_size' => 'thumbnail',
@@ -31,7 +26,7 @@ class image extends base {
 		'max_height' => '',
 		'max_size' => '',
 		'mime_types' => '',
-	);
+	); ///< defaults
 
 	/**
 	 * Constructor method

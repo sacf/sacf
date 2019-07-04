@@ -3,7 +3,7 @@
 /**
  * File: Tab
  * 
- * @package sacf\fields
+ * @package sacf/fields
  * @since 2.0.0
  * @version 2.0.0
  * 
@@ -16,15 +16,10 @@ namespace sacf\field;
  */
 class tab extends Base {
 
-	/**
-	 * default values
-	 *
-	 * @var array
-	 */
 	protected $defaults = array(
 		'placement' => 'top',
 		'endpoint' => 0,
-	);
+	); ///< defaults
 
 	/**
 	 * Constructor method

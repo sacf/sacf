@@ -3,7 +3,7 @@
 /**
  * File: Radio
  *
- * @package sacf\fields
+ * @package sacf/fields
  * @since 2.0.0
  * @version 2.0.0
  * @todo multiple default values?
@@ -18,18 +18,13 @@ namespace sacf\field;
  */
 class radio extends base {
 
-	/**
-	 * default values
-	 *
-	 * @var array
-	 */
 	protected $defaults = array(
 		'choices' => array(),
 		'default_value' => array(),
 		'layout' => 'vertical',
 		'other_choice' => 0,
 		'save_other_choice' => 0,
-	);
+	); ///< defaults
 
 	/**
 	 * Constructor method
@@ -84,9 +79,7 @@ class radio extends base {
 		$this->options['other_choice'] = $bool;
 		return $this;
 	}
-	/**
-	 * @help: save other values to the field's choices: 0, 1
-	 */
+
 	/**
 	 * save other value to the fields' choices 
 	 *

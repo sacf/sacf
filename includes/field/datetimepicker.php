@@ -3,7 +3,7 @@
 /**
  * File: Date Time Picker
  * 
- * @package sacf\fields
+ * @package sacf/fields
  * @since 2.0.0
  * @version 2.0.0
  * 
@@ -16,16 +16,11 @@ namespace sacf\field;
  */
 class datetimepicker extends base {
 
-	/**
-	 * default values
-	 *
-	 * @var array
-	 */
 	protected $defaults = array(
 		'display_format' => 'd/m/Y g:i a',
 		'return_format' => 'd/m/Y g:i a',
 		'first_day' => 1,
-	);
+	);  ///< defaults
 
 	/**
 	 * Constructor method

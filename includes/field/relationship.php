@@ -3,7 +3,7 @@
 /**
  * File: Relationship
  *
- * @package sacf\fields
+ * @package sacf/fields
  * @since 2.0.0
  * @version 2.0.0
  *
@@ -16,11 +16,6 @@ namespace sacf\field;
  */
 class relationship extends base {
 
-	/**
-	 * default values
-	 *
-	 * @var array
-	 */
 	protected $defaults = array(
 		'post_type' => array(),
 		'taxonomy' => array(),
@@ -30,14 +25,8 @@ class relationship extends base {
 		'min' => '',
 		'return_format' => 'object',
 		'show_image' => 0,
-	);
-
-	/**
-	 * flag: should a featured image be shown?
-	 *
-	 * @var boolean
-	 */
-	private $show_image = false;
+	);	 ///< defaults
+	private $show_image = false;	///< flag: should a featured image be shown?
 
 	/**
 	 * Constructor method
@@ -114,9 +103,6 @@ class relationship extends base {
 		$this->options['max'] = $int;
 		return $this;
 	}
-	/**
-	 * @help: sets return format: object, id
-	 */
 
 	/**
 	 * set return format

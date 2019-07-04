@@ -3,7 +3,7 @@
 /**
  * File: Link
  * 
- * @package sacf\fields
+ * @package sacf/fields
  * @since 2.0.0
  * @version 2.0.0
  */
@@ -15,14 +15,9 @@ namespace sacf\field;
  */
 class link extends base {
 
-	/**
-	 * default values
-	 *
-	 * @var array
-	 */
 	protected $defaults = array(
 		'return_format' => 'array',
-	);
+	); ///< defaults
 
 	/**
 	 * Constructor method

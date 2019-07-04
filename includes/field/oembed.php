@@ -3,7 +3,7 @@
 /**
  * File: OEmbed
  *
- * @package sacf\fields
+ * @package sacf/fields
  * @since 2.0.0
  * @version 2.0.0
  *
@@ -17,15 +17,10 @@ namespace sacf\field;
 
 class oembed extends base {
 
-	/**
-	 * default values
-	 *
-	 * @var array
-	 */
 	protected $defaults = array(
 		'width' => '',
 		'height' => '',
-	);
+	); ///< defaults
 
 	/**
 	 * Constructor method

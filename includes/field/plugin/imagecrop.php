@@ -2,24 +2,20 @@
 
 /**
  * Image Crop Add-on
- * @source https://github.com/andersthorborg/ACF-Image-Crop
+ * 
  * @since 2.0.0
  * @version 2.0.0
- * @package sacf\fields\plugins
+ * @package sacf/fields/plugins
  */
 
 namespace sacf\field\plugin;
 
 /**
- * Plugin Field: Image Crop
+ * Plugin Field: Image Crop  
+ * https://github.com/andersthorborg/ACF-Image-Crop
  */
 class imagecrop extends generic {
 
-	/**
-	 * default values
-	 *
-	 * @var array
-	 */
 	protected $defaults = array(
 		'crop_type' => 'hard',
 		'target_size' => 'thumbnail',
@@ -31,7 +27,7 @@ class imagecrop extends generic {
 		'retina_mode' => 'no',
 		'save_format' => 'id',
 		'library' => 'all',
-	);
+	);  ///< defaults
 
 	/**
 	 * Constructor method

@@ -3,7 +3,7 @@
 /**
  * File: E-Mail
  * 
- * @package sacf\fields
+ * @package sacf/fields
  * @since 2.0.0
  * @version 2.0.0
  * 
@@ -16,17 +16,12 @@ namespace sacf\field;
  */
 class email extends base {
 
-	/**
-	 * default values
-	 *
-	 * @var array
-	 */
 	protected $defaults = array(
 		'default_value' => '',
 		'placeholder' => '',
 		'prepend' => '',
 		'append' => ''
-	);
+	); ///< defaults
 
 	/**
 	 * Constructor method

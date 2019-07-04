@@ -3,7 +3,7 @@
 /**
  * File: Accordion field
  * 
- * @package sacf\fields
+ * @package sacf/fields
  * @since 2.0.0
  * @version 2.0.0
  * 
@@ -17,16 +17,12 @@ namespace sacf\field;
  */
 class accordion extends base {
 
-	/**
-	 * defaults
-	 *
-	 * @var array
-	 */
+	
 	protected $defaults = array(
 		'open' => 0,
 		'multi_expand' => 0,
 		'endpoint' => 0,
-	);
+	); ///< defaults
 
 	/**
 	 * Constructor method

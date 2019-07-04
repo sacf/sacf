@@ -3,7 +3,7 @@
 /**
  * File: Text
  *
- * @package sacf\fields
+ * @package sacf/fields
  * @since 2.0.0
  * @version 2.0.0
  *
@@ -17,16 +17,11 @@ namespace sacf\field;
 
 class user extends base {
 
-	/**
-	 * default values
-	 *
-	 * @var array
-	 */
 	protected $defaults = array(
 		'rolw' => '',
 		'allow_null' => 0,
 		'multiple' => 0,
-	);
+	);  ///< defaults
 
 	/**
 	 * Constructor method

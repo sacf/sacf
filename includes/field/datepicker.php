@@ -3,7 +3,7 @@
 /**
  * File: Date Picker
  * 
- * @package sacf\fields
+ * @package sacf/fields
  * @version 2.0.0
  * @since 2.0.0
  */
@@ -15,16 +15,11 @@ namespace sacf\field;
  */
 class datepicker extends base {
 
-	/**
-	 * default values
-	 *
-	 * @var array
-	 */
 	protected $defaults = array(
 		'display_format' => 'd/m/Y',
 		'return_format' => 'F j, Y',
 		'first_day' => 1,
-	);
+	);  ///< defaults
 
 	/**
 	 * Constructor method

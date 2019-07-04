@@ -3,7 +3,7 @@
 /**
  * File: File
  * 
- * @package sacf\fields
+ * @package sacf/fields
  * @since 2.0.0
  * @version 2.0.0
  * 
@@ -16,19 +16,14 @@ namespace sacf\field;
  */
 class file extends base {
 
-	/**
-	 * default values
-	 *
-	 * @var array
-	 */
-	protected $defaults = array(
-		'save_format' => 'object', // deprecated
+	protected $defaults = array( 
+		'save_format' => 'object',
 		'return_format' => 'array',
 		'library' => 'all',
 		'min_size' => '',
 		'max_size' => '',
 		'mime_types' => '',
-	);
+	); ///< defaults
 
 	/**
 	 * Constructor method

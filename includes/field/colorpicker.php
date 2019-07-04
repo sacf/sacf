@@ -3,7 +3,7 @@
 /**
  * File: Color Picker
  * 
- * @package sacf\fields
+ * @package sacf/fields
  * @since 2.0.0
  * @version 2.0.0
  * 
@@ -16,14 +16,9 @@ namespace sacf\field;
  */
 class colorpicker extends base {
 
-	/**
-	 * default values
-	 *
-	 * @var array
-	 */
 	protected $defaults = array(
 		'default_value' => '',
-	);
+	);  ///< defaults
 
 	/**
 	 * Constructor method

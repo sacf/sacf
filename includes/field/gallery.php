@@ -3,7 +3,7 @@
 /**
  * File: Gallery
  * 
- * @package sacf\fields
+ * @package sacf/fields
  * @since 2.0.0
  * @version 2.0.0
  */
@@ -15,11 +15,6 @@ namespace sacf\field;
  */
 class gallery extends Base {
 
-	/**
-	 * default values
-	 *
-	 * @var array
-	 */
 	protected $defaults = array(
 		'min' => '',
 		'max' => '',
@@ -32,7 +27,7 @@ class gallery extends Base {
 		'max_height' => '',
 		'max_size' => '',
 		'mime_types' => '',
-	);
+	); ///< defaults
 
 	/**
 	 * Constructor method

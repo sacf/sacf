@@ -3,7 +3,7 @@
 /**
  * File: Base Field
  *
- * @package sacf\fields
+ * @package sacf/fields
  * @since 2.0.0
  * @version 2.0.0
  *
@@ -16,43 +16,12 @@ namespace sacf\field;
  */
 class base {
 
-	/**
-	 * label for this field
-	 *
-	 * @var string
-	 */
-	public $label;
-	/**
-	 * name for this field
-	 *
-	 * @var string
-	 */
-	public $name;
-	/**
-	 * type of this field
-	 *
-	 * @var string
-	 */
-	public $type;
-	/**
-	 * key for this field
-	 *
-	 * @var string
-	 */
-	public $key;
 
-	/**
-	 * the field array 
-	 *
-	 * @var array
-	 */
-	protected $array = false;
-
-	/**
-	 * base options for all fields
-	 *
-	 * @var array
-	 */
+	public $label; 	///< label for this field 
+	public $name; 	///< name for this field
+	public $type; 	///< type of this field
+	public $key; 	///< key for this field
+	protected $array = false; ///< the field array
 	private $base_args = array(
 		'label' => '',
 		'name' => '',
@@ -64,22 +33,12 @@ class base {
 			'class' => '',
 			'id' => '',
 		),
-	);
+	);	///< base options for all fields
 
-	/**
-	 * defaults
-	 *
-	 * @var array
-	 */
-	protected $defaults = array();
+	protected $defaults = array(); ///< defaults
+	protected $options = array(); ///< options
 
-	/**
-	 * options
-	 *
-	 * @var array
-	 */
-	protected $options = array();
-
+	
 	/**
 	 * Create a new field of a given type
 	 *
@@ -329,7 +288,7 @@ class base {
 	/**
 	 * make key for this field
 	 *
-	 * @param [type] $salt
+	 * @param string $salt
 	 * @return void
 	 */
 	public function make_key($salt) {

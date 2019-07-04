@@ -3,7 +3,7 @@
 /**
  * File: Button Group
  * 
- * @package sacf\fields
+ * @package sacf/fields
  * @since 2.0.0
  * @version 2.0.0
  */
@@ -16,18 +16,13 @@ namespace sacf\field;
 
 class buttongroup extends base {
 	
-	/**
-	 * default values
-	 *
-	 * @var array
-	 */
 	protected $defaults = array(
 		'choices' => array(),
 		'allow_null' => 0,
 		'default_value' => '',
 		'layout' => 'horizontal',
 		'return_format' => 'value',
-	);
+	); ///< defaults
 	
 	/**
 	* Constructor method

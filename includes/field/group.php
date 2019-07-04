@@ -2,8 +2,8 @@
 
 /**
  * File: Group
- * 
- * @package sacf\fields
+ *
+ * @package sacf/fields
  * @since 2.0.0
  * @version 2.0.0
  */
@@ -15,21 +15,11 @@ namespace sacf\field;
  */
 class group extends base {
 
-	/**
-	 * subfields of this group
-	 *
-	 * @var array
-	 */
-	private $sub_fields = array();
+	private $sub_fields = array(); ///< subfields of this group
 
-	/**
-	 * default values
-	 *
-	 * @var array
-	 */
 	protected $defaults = array(
 		'layout' => 'block',
-	);
+	); ///< defaults
 
 	/**
 	 * Constructor method
@@ -88,7 +78,7 @@ class group extends base {
 	}
 
 	/**
-	 * create keys for subfields 
+	 * create keys for subfields
 	 *
 	 * @param string $salt salt from parent
 	 * @return void

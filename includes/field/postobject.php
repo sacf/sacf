@@ -3,7 +3,7 @@
 /**
  * File: Post-Object
  *
- * @package sacf\fields
+ * @package sacf/fields
  * @since 2.0.0
  * @version 2.0.0
  *
@@ -16,18 +16,13 @@ namespace sacf\field;
  */
 class postobject extends base {
 
-	/**
-	 * default values
-	 *
-	 * @var array
-	 */
 	protected $defaults = array(
 		'post_type' => array(),
 		'taxonomy' => array(),
 		'allow_null' => 0,
 		'multiple' => 0,
 		'return_format' => 'object',
-	);
+	); ///< defaults
 
 	/**
 	 * Constructor method

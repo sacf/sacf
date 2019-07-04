@@ -2,11 +2,11 @@
 
 /**
  * File: Flexible Content
- * 
- * @package sacf\fields
+ *
+ * @package sacf/fields
  * @since 2.0.0
  * @version 2.0.0
- * 
+ *
  */
 
 namespace sacf\field;
@@ -16,36 +16,19 @@ namespace sacf\field;
  */
 class flexcontent extends base {
 
-	/**
-	 * subfields of this field
-	 *
-	 * @var array
-	 */
-	private $sub_fields = array();
-
-	/**
-	 * layouts of this field
-	 *
-	 * @var array
-	 */
-	private $layouts = array();
-	/**
-	 * default values
-	 *
-	 * @var array
-	 */
+	private $sub_fields = array(); ///< subfields of this field
+	private $layouts = array(); ///< layouts of this field
 	protected $defaults = array(
 		'min' => '',
 		'max' => '',
 		'button_label' => 'Add Module',
-	);
-	
+	); ///< defaults
 
 	/**
 	 * Constructor method
 	 *
 	 * @param string $label Label for this field
-	 * @param String $name Name for this field (optional - sanitized label if empty)<br>Used in <code>get_field('field_name')</code>
+	 * @param String $name Name for this field (optional - sanitized label if empty)<br>Used in `get_field('field_name')`
 	 */
 	public function __construct($label, $name = false) {
 		parent::__construct($label, $name, 'flexible_content');
@@ -61,7 +44,7 @@ class flexcontent extends base {
 		$this->options['button_label'] = $string;
 		return $this;
 	}
-	
+
 	/**
 	 * set minimum amount of rwos
 	 *
@@ -72,7 +55,7 @@ class flexcontent extends base {
 		$this->options['min'] = $int;
 		return $this;
 	}
-	
+
 	/**
 	 * set maximum amount of rwos
 	 *
@@ -85,15 +68,11 @@ class flexcontent extends base {
 	}
 
 	/**
-	 * @help: add a flexibel content layout: addLayout('label', 'layout_name', 'display', 'min', 'max')
-	 */
-
-	/**
 	 * add a flexible content layout
 	 *
 	 * @param flexcontentlayout | string $label string or flexcontenlayout object
-	 * @param boolean $name Name for this layout (optional - sanitized label if empty)<br>Returned by<code>get_row_layout()</code>
-	 * @param string $display <code>block</code><br><code>table</<code><br><code>row</<code>
+	 * @param boolean $name Name for this layout (optional - sanitized label if empty)<br>Returned by`get_row_layout()`
+	 * @param string $display `block`<br>`table</`<br>`row</`
 	 * @param string $min minimum amount of rows of this layout
 	 * @param string $max maximum amount of rows of this layout
 	 * @return void
@@ -106,7 +85,7 @@ class flexcontent extends base {
 		}
 		return $this;
 	}
-	
+
 	/**
 	 * add a field to a layout: add($field_var, 'layout_name')
 	 *
@@ -123,11 +102,11 @@ class flexcontent extends base {
 	 * build a layout from parameters
 	 *
 	 * @param string $label label of the layout
-	 * @param string $name Name for this layout (optional - sanitized label if empty)<br>Returned by<code>get_row_layout()</code>
-	 * @param string $display <code>block</code><br><code>table</<code><br><code>row</<code>
+	 * @param string $name Name for this layout (optional - sanitized label if empty)<br>Returned by`get_row_layout()`
+	 * @param string $display `block`<br>`table</`<br>`row</`
 	 * @param int $min minimum amount of rows of this layout
 	 * @param int $max maximum amount of rows of this layout
-	 * @todo shouldn't the name be build from label if false? 
+	 * @todo shouldn't the name be build from label if false?
 	 * @return void
 	 */
 	private function buildLayoutFromParameters($label, $name, $display, $min, $max) {
@@ -138,7 +117,6 @@ class flexcontent extends base {
 		$this->sub_fields[$name]['min'] = $min;
 		$this->sub_fields[$name]['max'] = $max;
 	}
-
 
 	/**
 	 * create a layout from class \sacf\flexcontentlayout
@@ -202,7 +180,7 @@ class flexcontent extends base {
 	}
 
 	/**
-	 * create keys for subfields 
+	 * create keys for subfields
 	 *
 	 * @param string $salt salt from parent
 	 * @return void

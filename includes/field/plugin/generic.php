@@ -4,7 +4,7 @@
  * A generic plugin field
  * @since 2.0.0
  * @version 2.0.0
- * @package sacf\fields\plugins
+ * @package sacf/fields/plugins
  */
 
 namespace sacf\field\plugin;
@@ -19,13 +19,6 @@ class generic extends base {
 
 	/**
 	 * Constructor method
-	 *
-	 * @param string $label Label for this field
-	 * @param string $name Name for this field (optional - sanitized label if empty)<br>Used in <code>get_field('field_name')</code>
-	 */
-
-	/**
-	 * Undocumented function
 	 *
 	 * @param string $label Label for this field
 	 * @param string $name Name for this field (optional - sanitized label if empty)<br>Used in <code>get_field('field_name')</code>

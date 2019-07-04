@@ -3,7 +3,7 @@
 /**
  * File: Timepicker
  *
- * @package sacf\fields
+ * @package sacf/fields
  * @since 2.0.0
  * @version 2.0.0
  *
@@ -17,15 +17,10 @@ namespace sacf\field;
 
 class timepicker extends base {
 
-	/**
-	 * default values
-	 *
-	 * @var array
-	 */
-	protected $defaults = array(
+	protected $defaults = array( 
 		'display_format' => 'g:i a',
 		'return_format' => 'g:i a',
-	);
+	); ///< defaults
 
 	/**
 	 * Constructor method

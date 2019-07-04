@@ -3,7 +3,7 @@
 /**
  * File: Repeater
  *
- * @package sacf\fields
+ * @package sacf/fields
  * @since 2.0.0
  * @version 2.0.0
  *
@@ -16,25 +16,14 @@ namespace sacf\field;
  */
 class repeater extends base {
 
-	/**
-	 * store the subfields
-	 *
-	 * @var array
-	 */
-	private $sub_fields = array();
-
-	/**
-	 * defaults
-	 *
-	 * @var array
-	 */
-	protected $defaults = array(
+	private $sub_fields = array(); ///< store the subfields
+	protected $defaults = array( 
 		'min' => '',
 		'max' => '',
 		'layout' => 'row',
 		'collapsed' => '',
 		'button_label' => '',
-	);
+	); ///< defaults
 
 	/**
 	 * Constructor method
@@ -56,7 +45,7 @@ class repeater extends base {
 		$this->options['min'] = $int;
 		return $this;
 	}
-	
+
 	/**
 	 * set maximum amount of rows
 	 *
@@ -79,11 +68,10 @@ class repeater extends base {
 		return $this;
 	}
 
-
 	/**
 	 * select a subfield to show when row is collapsed
 	 *
-	 * @param sacf\field $field 
+	 * @param sacf\field $field
 	 * @return void
 	 * @todo replace collapsed key with
 	 */
@@ -119,7 +107,7 @@ class repeater extends base {
 	}
 
 	/**
-	 * add a new layout 
+	 * add a new layout
 	 *
 	 * @param $layout $layout
 	 * @return void

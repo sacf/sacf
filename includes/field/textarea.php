@@ -3,7 +3,7 @@
 /**
  * File: Textarea
  *
- * @package sacf\fields
+ * @package sacf/fields
  * @since 2.0.0
  * @version 2.0.0
  *
@@ -16,15 +16,10 @@ namespace sacf\field;
 
 class textarea extends text {
 	
-	/**
-	 * default values
-	 *
-	 * @var array
-	 */
-	protected $defaults = array(
+	protected $defaults = array( 
 		'rows' => '',
-		'new_lines' => '', // wpautop | br | ''
-	);
+		'new_lines' => '', 
+	); ///< defaults
 
 	/**
 	 * Constructor method

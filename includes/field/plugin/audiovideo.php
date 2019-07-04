@@ -2,24 +2,20 @@
 
 /**
  * HTML 5 Audio/Video Field
- * @source https://github.com/ipsips/acf-audio-video
+ * 
  * @since 2.0.0
  * @version 2.0.0
- * @package sacf\fields\plugins
+ * @package sacf/fields/plugins
  */
 
 namespace sacf\field\plugin;
 
 /**
- * Select Field: Audio / Video
+ * Select Field: Audio / Video  
+ * https://github.com/ipsips/acf-audio-video
  */
 class audiovideo extends generic {
 
-	/**
-	 * default values
-	 *
-	 * @var array
-	 */
 	protected $defaults = array(
 		'library' => 'all',
 		'general_type' => 'both',
@@ -27,7 +23,7 @@ class audiovideo extends generic {
 		'min_size' => '',
 		'max_size' => '',
 		'return_format' => 'html',
-	);
+	); ///< defaults
 
 	/**
 	 * Constructor method

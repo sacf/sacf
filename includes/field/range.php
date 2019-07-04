@@ -3,7 +3,7 @@
 /**
  * File: Range
  *
- * @package sacf\fields
+ * @package sacf/fields
  * @since 2.0.0
  * @version 2.0.0
  * @todo aren't the steps float values? This field is not working!
@@ -16,17 +16,12 @@ namespace sacf\field;
  */
 class range extends text {
 
-	/**
-	 * default values
-	 *
-	 * @var array
-	 */
-	protected $defaults = array(
+	protected $defaults = array( 
 		'min' => '',
 		'max' => '',
 		'step' => '',
 		'default_value' => '',
-	);
+	); ///< defaults
 
 	/**
 	 * Constructor method

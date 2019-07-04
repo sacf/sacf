@@ -3,7 +3,7 @@
 /**
  * File: address
  *
- * @package sacf\fields
+ * @package sacf/fields
  * @since 2.0.0
  * @version 2.0.0
  * @todo better documentation is needed
@@ -19,11 +19,6 @@ namespace sacf\field\plugin;
 
 class address extends generic {
 
-	/**
-	 * default values
-	 *
-	 * @var array
-	 */
 	private $defaults = array(
 		'output_type' => 'html',
 		'address_layout' => '[
@@ -61,21 +56,9 @@ class address extends generic {
 						"id":"country","label":"Country","defaultValue":"","enabled":true,"cssClass":"country","separator":""
 					}
 				}',
-	);
-
-	/**
-	 * subfields of this field
-	 *
-	 * @var array
-	 */
-	private $fields = array();
-
-	/**
-	 * layout of this field
-	 *
-	 * @var array
-	 */
-	private $layout = array();
+	);  ///< defaults
+	private $fields = array(); ///< subfields of this field
+	private $layout = array(); ///< layout of this field
 
 	/**
 	 * Constructor method
@@ -113,7 +96,7 @@ class address extends generic {
 	/**
 	 * set the adress options
 	 *
-	 * @param [type] $int
+	 * @param int $int
 	 * @return void
 	 */
 	public function address_options($int) {
@@ -123,7 +106,7 @@ class address extends generic {
 
 	/**
 	 * add an adress
-	 * 
+	 *
 	 * @param string $key
 	 * @param string $value value as json?
 	 * @return void

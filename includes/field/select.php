@@ -3,7 +3,7 @@
 /**
  * File: Select
  * 
- * @package sacf\fields
+ * @package sacf/fields
  * @since 2.0.0
  * @version 2.0.0
  * @todo default values as key=>value? 
@@ -17,12 +17,7 @@ namespace sacf\field;
  */
 class select extends base {
 
-	/**
-	 * default values
-	 *
-	 * @var array
-	 */
-	protected $defaults = array(
+	protected $defaults = array( 
 		'choices' => array(),
 		'allow_null' => 0,
 		'multiple' => 0,
@@ -31,7 +26,7 @@ class select extends base {
 		'placeholder' => '',
 		'disabled' => 0,
 		'readonly' => 0,
-	);
+	); ///< defaults
 
 	/**
 	 * Constructor method

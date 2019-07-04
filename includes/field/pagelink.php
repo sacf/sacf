@@ -3,7 +3,7 @@
 /**
  * File: Pagelink
  * 
- * @package sacf\fields
+ * @package sacf/fields
  * @since 2.0.0
  * @version 2.0.0
  * @todo allow boolean values in different formats?
@@ -18,17 +18,12 @@ namespace sacf\field;
  */
 class pagelink extends base {
 
-	/**
-	 * default values
-	 *
-	 * @var array
-	 */
 	protected $defaults = array(
 		'post_type' => array(),
 		'taxonomy' => array(),
 		'allow_null' => 0,
 		'multiple' => 0,
-	);
+	); ///< defaults
 
 	/**
 	 * Constructor method
