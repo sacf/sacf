@@ -1,11 +1,10 @@
 <?php
 /*
-Plugin Name: SACF
-Plugin URI: https://bitbucket.org/neonpastell/wp-smart-acf
+Plugin Name: Advanced Custom Fields: SACF
+Plugin URI: https://github.com/sacf
 Description: ACF, but scripted! Building upon the <a href="http://www.advancedcustomfields.com" target="blank">Advanced Custom Fields</a> plugin by Elliot Condon this plugin adds OOP API Code for Developers.
-Author: Manuel Piepereit, Moritz Jacobs, Neonpastell GmbH
-Author URI: http://www.neonpastell.de/
-Version: 2.0.0-alpha-1
+Author: Manuel Piepereit, Moritz Jacobs, Claus Hoffmann
+Version: 2.0.0-beta1
 Text Domain: sacf
 Domain Path: /lang
  */
@@ -88,8 +87,8 @@ if (!class_exists('sacf')):
 		private function acf_check() {
 			if (!defined('ACF')) {
 				add_action('admin_notices', function () {
-					echo '<div class="notice error"><p>';
-					echo __('To use SACF you need to activate', 'sacf') . ' <a href="https://www.advancedcustomfields.com/">Advanced Custom Fields</a>.';
+					echo '<div class="notice notice-warning"><p>';
+					echo sprintf(__('Warning: You need to activate %s in order to use the SACF plugin.', 'sacf'), '<a href="' . get_admin_url(null, 'plugins.php') . '">Advanced Custom Fields</a>');
 					echo '</p></div>';
 				});
 				return false;
