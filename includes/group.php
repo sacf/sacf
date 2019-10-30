@@ -17,6 +17,7 @@ class group {
 
 	private $fields = array(); ///< fields
 	private $location = array(array(array('param' => 'post_type', 'operator' => '==', 'value' => 'post'))); ///< where is this grop shown
+	private $is_default_location = true; 
 	private $defaults = array(
 		'menu_order' => 0,
 		'position' => 'normal', // side
@@ -148,6 +149,7 @@ class group {
 	/**
 	 * Shows field group on specified location
 	 *
+	 * @todo what should the default location do?
 	 * @param string $p The parameter, eg.: post_type
 	 * @param string $o The operator, eg.: ==
 	 * @param string $v The value, eg.: project
