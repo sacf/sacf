@@ -27,8 +27,8 @@ class datepicker extends base {
 	 * @param string $label Label for this field
 	 * @param string $name Name for this field (optional - sanitized label if empty)<br>Used in <code>get_field('field_name')</code>
 	 */
-	public function __construct($label, $name = false) {
-		parent::__construct($label, $name, 'date_picker');
+	public function __construct($label, $name = false, $type = 'date_picker') {
+		parent::__construct($label, $name, $type);
 	}
 
 	/**

@@ -95,7 +95,7 @@ class base {
 	 * @return void
 	 */
 	public function class($string) {
-		$this->base_args['wrapper']['class'] = $string;
+		$this->base_args['wrapper']['class'] = $this->base_args['wrapper']['class'].' '.$string;
 		return $this;
 	}
 
@@ -262,6 +262,27 @@ class base {
 
 		// merges field options with args
 		return $this->array = wp_parse_args($this->options, $args);
+	}
+
+	/**
+	 * clone a field to a different label/name
+	 *
+	 * @param boolean $label
+	 * @param boolean $name
+	 * @return void
+	 */
+	public function clone($label=false, $name=false) {
+		$clone = unserialize(serialize($this));
+		if($label) {
+			$clone->label = $label;
+		}
+		
+		if($name) {
+			$clone->name = $name;
+			$clone->make_key($name);
+		}
+		
+		return $clone;
 	}
 
 	/**

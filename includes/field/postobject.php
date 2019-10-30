@@ -30,8 +30,8 @@ class postobject extends base {
 	 * @param string $label Label for this field
 	 * @param string $name Name for this field (optional - sanitized label if empty)<br>Used in <code>get_field('field_name')</code>
 	 */
-	public function __construct($label, $name = false) {
-		parent::__construct($label, $name, 'post_object');
+	public function __construct($label, $name = false, $type = 'post_object') {
+		parent::__construct($label, $name, $type);
 	}
 
 	/**
@@ -39,6 +39,7 @@ class postobject extends base {
 	 *
 	 * @param array $array e.g. <code>array ( 0 => 'post', 1 => 'page', 2 => 'attachment' )</code>
 	 * @return void
+	 * @todo enable string as single post type? 
 	 */
 	public function post_type($array) {
 		$this->options['post_type'] = $array;

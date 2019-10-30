@@ -21,6 +21,7 @@ class flexcontent extends base {
 	protected $defaults = array(
 		'min' => '',
 		'max' => '',
+		'display' => 'table',
 		'button_label' => 'Add Module',
 	); ///< defaults
 
@@ -30,8 +31,8 @@ class flexcontent extends base {
 	 * @param string $label Label for this field
 	 * @param String $name Name for this field (optional - sanitized label if empty)<br>Used in `get_field('field_name')`
 	 */
-	public function __construct($label, $name = false) {
-		parent::__construct($label, $name, 'flexible_content');
+	public function __construct($label, $name = false, $type = 'flexible_content') {
+		parent::__construct($label, $name, $type);
 	}
 
 	/**
@@ -42,6 +43,17 @@ class flexcontent extends base {
 	 */
 	public function button_label($string) {
 		$this->options['button_label'] = $string;
+		return $this;
+	}
+
+	/**
+	 * set display style of flexcontent field
+	 *
+	 * @param string $string <code>row</code>, <code>table</code>, <code>block</code>
+	 * @return void
+	 */
+	public function display($string) {
+		$this->options['display'] = $string;
 		return $this;
 	}
 
@@ -71,8 +83,8 @@ class flexcontent extends base {
 	 * add a flexible content layout
 	 *
 	 * @param flexcontentlayout | string $label string or flexcontenlayout object
-	 * @param boolean $name Name for this layout (optional - sanitized label if empty)<br>Returned by`get_row_layout()`
-	 * @param string $display `block`<br>`table</`<br>`row</`
+	 * @param boolean $name Name for this layout (optional - sanitized label if empty)<br>Returned by `get_row_layout()`
+	 * @param string $display `block`, `table` or `row`
 	 * @param string $min minimum amount of rows of this layout
 	 * @param string $max maximum amount of rows of this layout
 	 * @return void
