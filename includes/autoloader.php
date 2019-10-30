@@ -2,7 +2,7 @@
 /**
  * Autoload class files
  *
- * @package sacf\utils
+ * @package sacf/utils
  * @version 2.0.0
  * @since 2.0.0
  */
@@ -11,7 +11,13 @@ namespace sacf;
 
 spl_autoload_register('sacf\sacf_autoloader');
 
-function sacf_autoloader($class) {
+/**
+ * autoload a sacf class
+ *
+ * @param sacf\class $class
+ * @return void
+ */
+function sacf_autoloader($class) { ///< autoload a sacf class
 	$class = ltrim($class, '\\');
 
 	// bail if namespace doesn't match

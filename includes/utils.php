@@ -2,17 +2,19 @@
 /**
  * Some util functions
  *
- * @package sacf\utils
+ * @package sacf/utils
  */
 
 namespace sacf;
 
+/**
+ * a utility class with helper functions
+ */
 class utils {
 
-	// admin css for help popups
-	private static $css_added = false;
+	private static $css_added = false;	///< admin css for help popups
 
-	/**
+	/** 
 	 * hashing method for key generation
 	 * @param  string $str some field name
 	 * @return string      field_key_hash
@@ -20,23 +22,40 @@ class utils {
 	private static function key($str) {
 		return md5($str);
 	}
-	// key for field groups
+	
+	/**
+	 * hashing method for group keys
+	 *
+	 * @param string $str some group name
+	 * @return string group_key_hash
+	 */
 	public static function key_group($str) {
 		return 'group_' . self::key($str);
 	}
-	// key for fields
+	
+	/**
+	 * hashing method for field keys
+	 *
+	 * @param string $str some field name
+	 * @return string field_key_hash
+	 */
 	public static function key_field($str) {
 		return 'field_' . self::key($str);
 	}
-	// key for flex content layout
+	
+	/**
+	 * hashing method for flexcontent layout keys
+	 *
+	 * @param string $str some field name
+	 * @return string flexcontent_layout_key_hash
+	 */
 	public static function key_layout($str) {
 		return 'layout_' . self::key($str);
 	}
 
 	/**
 	 * Displays some help for field groups
-	 * @param class $class The sacf\group class
-	 * @param string $key The groups ID
+	 * @param class $class The `sacf\group` class
 	 * @return void
 	 */
 	public static function help_for_group($class) {
@@ -56,7 +75,7 @@ class utils {
 
 	/**
 	 * Displays some help for a field
-	 * @param class $class The sacf\field class
+	 * @param class $class The `sacf\field` class
 	 * @return void
 	 */
 	public static function help_for_field($class) {
@@ -75,7 +94,11 @@ class utils {
 		}, 10, 2);
 	}
 
-	// adds css to admin head
+	/**
+	 * adds css to admin head
+	 *
+	 * @return void
+	 */
 	private static function add_global_css() {
 		// bail if css is already added
 		if (self::$css_added) {
@@ -122,7 +145,12 @@ class utils {
 		});
 	}
 
-	// creates the tooltip
+	/**
+	 * create the tooltip shown by the help function
+	 *
+	 * @param string $message the help message
+	 * @return void
+	 */
 	private static function create_tooltip($message) {
 		self::add_global_css();
 		$string = '<div class="sacf-help">';
@@ -132,7 +160,12 @@ class utils {
 		return $string;
 	}
 
-	// creates dev notice from class files
+	/**
+	 * creates dev notice from class files
+	 *
+	 * @param class $class
+	 * @return void
+	 */
 	private static function create_help_table($class) {
 		$prod_class = new \ReflectionClass($class);
 		$public_methods = $prod_class->getMethods(\ReflectionMethod::IS_PUBLIC);
@@ -154,7 +187,13 @@ class utils {
 		return $message_string;
 	}
 
-	// gets tagged line from DocComment, eg: @help:
+	/**
+	 * get tagged lines from doc blocks, e.g. `@help`
+	 *
+	 * @param string $str 	the message
+	 * @param string $tag	the tag
+	 * @return void
+	 */
 	private static function getDocComment($str, $tag = '') {
 		if (empty($tag)) {
 			return $str;

@@ -1,22 +1,27 @@
 <?php
 
 /**
- * The base field to extend from
+ * File: Base Field
+ *
+ * @package sacf/fields
+ * @since 2.0.0
  * @version 2.0.0
- * @package sacf\fields
+ *
  */
 
 namespace sacf\field;
 
+/**
+ * The base field to extend from
+ */
 class base {
 
-	public $label;
-	public $name;
-	public $type;
-	public $key;
-	protected $array = false;
 
-	// options for all fields
+	public $label; 	///< label for this field 
+	public $name; 	///< name for this field
+	public $type; 	///< type of this field
+	public $key; 	///< key for this field
+	protected $array = false; ///< the field array
 	private $base_args = array(
 		'label' => '',
 		'name' => '',
@@ -28,16 +33,18 @@ class base {
 			'class' => '',
 			'id' => '',
 		),
-	);
-	// options for field type
-	protected $defaults = array();
-	protected $options = array();
+	);	///< base options for all fields
 
+	protected $defaults = array(); ///< defaults
+	protected $options = array(); ///< options
+
+	
 	/**
-	 * Creates a new field of undefined type
+	 * Create a new field of a given type
 	 *
-	 * @param string $label The field label
-	 * @param string $name The fields name you use in get_field('field_name')
+	 * @param string $label Label for this field
+	 * @param string $name Name for this field (optional - sanitized label if empty)<br>Used in <code>get_field('field_name')</code>
+	 * @param string $type type of this field
 	 */
 	public function __construct($label, $name = false, $type = '') {
 		$this->label = $label;
@@ -47,7 +54,10 @@ class base {
 	}
 
 	/**
-	 * @help: set instruction text as string
+	 * set instructions for this field
+	 *
+	 * @param string $string instructions
+	 * @return void
 	 */
 	public function instructions($string) {
 		$this->base_args['instructions'] = $string;
@@ -55,14 +65,23 @@ class base {
 	}
 
 	/**
-	 * @help: set field as required: false, true
+	 * set field as required
+	 *
+	 * @param boolean $bool is required
+	 * @return void
 	 */
 	public function required($bool = true) {
 		$this->base_args['required'] = $bool;
 		return $this;
 	}
+
 	/**
-	 * @help: set wrapper options as one array('width' => 50, 'class' => "foo", 'id' => "bar")
+	 * set wrapper options
+	 *
+	 * @param int $width width in px
+	 * @param string $class css class names
+	 * @param string $id css id
+	 * @return void
 	 */
 	public function wrapper($width, $class, $id) {
 		$this->base_args['wrapper'] = array('width' => $width, 'class' => $class, 'id' => $id);
@@ -70,15 +89,21 @@ class base {
 	}
 
 	/**
-	 * @help: add class name for field wrapper
+	 * add class name for field wrapper
+	 *
+	 * @param string $string css class names
+	 * @return void
 	 */
-	public function class ($string) {
-		$this->base_args['wrapper']['class'] = $string;
+	public function class($string) {
+		$this->base_args['wrapper']['class'] = $this->base_args['wrapper']['class'].' '.$string;
 		return $this;
 	}
 
 	/**
-	 * @help: change id for field wrapper
+	 * change id for field wrapper
+	 *
+	 * @param string $string css id
+	 * @return void
 	 */
 	public function id($string) {
 		$this->base_args['wrapper']['id'] = $string;
@@ -86,7 +111,10 @@ class base {
 	}
 
 	/**
-	 * @help: change width in % for field wrapper
+	 * set width in % for field wrapper
+	 *
+	 * @param int $int
+	 * @return void
 	 */
 	public function width($int) {
 		$this->base_args['wrapper']['width'] = $int;
@@ -94,20 +122,35 @@ class base {
 	}
 
 	/**
-	 * @help: set conditional logic as standard acf array(...)
+	 * set conditional logic as standard acf array
+	 *
+	 * @param array $array conditional logic as acf array
+	 * @return void
 	 */
 	public function conditional_logic($array) {
 		$this->base_args['conditional_logic'] = $array;
 		return $this;
 	}
 
-	// creates a logic array partial
+	/**
+	 * create a logic partial
+	 *
+	 * @param sacf\field $field
+	 * @param string $operator
+	 * @param string $value
+	 * @return void
+	 */
 	private function create_conditional_logic($field, $operator, $value) {
 		return array('field' => $field, 'operator' => $operator, 'value' => $value);
 	}
 
 	/**
-	 * @help: show this field if: if($field, operator='==', value='1')
+	 * conditional "if" logic. <code>if($field, operator='==', value='1')</code>
+	 *
+	 * @param sacf\field $field
+	 * @param string $operator
+	 * @param string $value
+	 * @return void
 	 */
 	public function if ($field, $operator = '==', $value = '1') {
 		// throw error if field is not of type field
@@ -123,9 +166,14 @@ class base {
 	}
 
 	/**
-	 * @help: continue with: and($field, operator='==', value='1')
+	 * continue a previously started conditional logic: <code>and($field, operator='==', value='1')</code>
+	 *
+	 * @param sacf\field $field
+	 * @param string $operator
+	 * @param string $value
+	 * @return void
 	 */
-	public function  and ($field, $operator = '==', $value = '1') {
+	public function and ($field, $operator = '==', $value = '1') {
 		// throw error if field is not of type field
 		if (!is_subclass_of($field, '\sacf\field\base')) {
 			\trigger_error(__('Confitional logics $field must be a field. In function "', 'sacf') . __FUNCTION__ . '"', E_USER_NOTICE);
@@ -137,9 +185,14 @@ class base {
 	}
 
 	/**
-	 * @help: continue with: or($field, operator='==', value='1')
+	 * continue a previously started conditional logic: <code>or($field, operator='==', value='1')</code>
+	 *
+	 * @param sacf\field $field
+	 * @param string $operator
+	 * @param string $value
+	 * @return void
 	 */
-	public function  or ($field, $operator = '==', $value = '1') {
+	public function or($field, $operator = '==', $value = '1') {
 		// throw error if field is not of type field
 		if (!is_subclass_of($field, '\sacf\field\base')) {
 			\trigger_error(__('Confitional logics $field must be a field. In function "', 'sacf') . __FUNCTION__ . '"', E_USER_NOTICE);
@@ -149,15 +202,19 @@ class base {
 	}
 
 	/**
-	 * returns the field key
+	 * get field key
+	 *
+	 * @return void
 	 */
 	public function get_key() {
 		return $this->key;
 	}
 
 	/**
-	 * @help: allows you to add a field directly to a group
+	 * add a field directly to a field group
+	 *
 	 * @param sacf\group $group
+	 * @return void
 	 */
 	public function add_to($group) {
 		$group->add($this);
@@ -165,7 +222,9 @@ class base {
 	}
 
 	/**
-	 * @help: displays all useful functions for this field
+	 * display all useful functions for this field
+	 *
+	 * @return void
 	 */
 	public function help() {
 		\sacf\utils::help_for_field($this);
@@ -173,7 +232,9 @@ class base {
 	}
 
 	/**
-	 * creates field array
+	 * create the field array
+	 *
+	 * @return void
 	 */
 	public function make() {
 		// bail early if array is already created
@@ -204,7 +265,30 @@ class base {
 	}
 
 	/**
-	 * compiles conditional logic
+	 * clone a field to a different label/name
+	 *
+	 * @param boolean $label
+	 * @param boolean $name
+	 * @return void
+	 */
+	public function clone($label=false, $name=false) {
+		$clone = unserialize(serialize($this));
+		if($label) {
+			$clone->label = $label;
+		}
+		
+		if($name) {
+			$clone->name = $name;
+			$clone->make_key($name);
+		}
+		
+		return $clone;
+	}
+
+	/**
+	 * compile conditional logic
+	 *
+	 * @return void
 	 */
 	private function make_conditional_logic() {
 		$logic = $this->base_args['conditional_logic'];
@@ -224,6 +308,9 @@ class base {
 
 	/**
 	 * make key for this field
+	 *
+	 * @param string $salt
+	 * @return void
 	 */
 	public function make_key($salt) {
 		if (!isset($this->name)) {

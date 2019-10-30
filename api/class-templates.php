@@ -1,12 +1,16 @@
 <?php
 
-namespace sacf;
-
 /**
  * Simplify rendering of Flex Content and Repeater field template partials
  * @package sacf/api
  * @version 2.0.0
  * @since 1.3.0
+ */
+
+namespace sacf;
+
+/**
+ * class templates
  */
 class templates {
 

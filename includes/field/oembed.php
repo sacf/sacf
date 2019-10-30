@@ -1,35 +1,56 @@
 <?php
 
 /**
- * Field: oEmbed
+ * File: OEmbed
+ *
+ * @package sacf/fields
+ * @since 2.0.0
  * @version 2.0.0
+ *
  */
 
 namespace sacf\field;
 
+/**
+ * Field: OEmbed
+ */
+
 class oembed extends base {
 
-    protected $defaults = array(
-            'width' => '',
-            'height' => '',
-        );
+	protected $defaults = array(
+		'width' => '',
+		'height' => '',
+	); ///< defaults
 
-	public function __construct($label, $name=false) {
-		parent::__construct($label, $name, 'oembed');
+	/**
+	 * Constructor method
+	 *
+	 * @param string $label Label for this field
+	 * @param string $name Name for this field (optional - sanitized label if empty)<br>Used in <code>get_field('field_name')</code>
+	 */
+	public function __construct($label, $name = false, $type = 'oembed') {
+		parent::__construct($label, $name, $type);
 	}
 
 	/**
-	 * @help: sets embed height in px
+	 * Set the embed width in px
+	 *
+	 * @param int $int width
+	 * @return void
 	 */
-	public function width($string) {
-		$this->options['width'] = $string;
+	public function width($int) {
+		$this->options['width'] = $int;
 		return $this;
 	}
+	
 	/**
-	 * @help: sets embed height in px
+	 * Set the embed height in px
+	 *
+	 * @param int $int height
+	 * @return void
 	 */
-	public function height($string) {
-		$this->options['height'] = $string;
+	public function height($int) {
+		$this->options['height'] = $int;
 		return $this;
 	}
 }

@@ -1,44 +1,69 @@
 <?php
 
 /**
- * Select field: TrueFalse
+ * File: truefalse
+ *
+ * @package sacf/fields
+ * @since 2.0.0
  * @version 2.0.0
+ * @todo allow boolean values in different formats?
+ *
  */
 
 namespace sacf\field;
 
+/**
+ * Select Field: Truefalse
+ */
 class truefalse extends base {
-
-    protected $defaults = array(
-            'message' => '',
-            'default_value' => 0,
-            'ui' => 0,
-            'ui_on_text' => '',
-            'ui_off_text' => ''
-        );
-
-	public function __construct($label, $name=false) {
-		parent::__construct($label, $name, 'true_false');
-	}
-
+	
+	protected $defaults = array( 
+		'message' => '',
+		'default_value' => 0,
+		'ui' => 0,
+		'ui_on_text' => '',
+		'ui_off_text' => '',
+	); ///< defaults
 
 	/**
-	 * @help: set the message as string
+	 * Constructor method
+	 *
+	 * @param string $label Label for this field
+	 * @param string $name Name for this field (optional - sanitized label if empty)<br>Used in <code>get_field('field_name')</code>
+	 */
+	public function __construct($label, $name = false, $type = 'true_false') {
+		parent::__construct($label, $name, $type);
+	}
+	
+	/**
+	 * set the message (label)
+	 *
+	 * @param string $string message used as label
+	 * @return void
+	 * 
 	 */
 	public function message($string) {
 		$this->options['message'] = $string;
 		return $this;
 	}
+	
 	/**
-	 * @help: set if checkbox is checked by default: 0, 1
+	 * set the default checked state
+	 *
+	 * @param boolean $bool checked state
+	 * @return void
 	 */
 	public function default_value($bool = true) {
 		$this->options['default_value'] = $bool;
 		return $this;
 	}
 
+
 	/**
-	 * @help: set if the modern ui should be displayed: 0, 1
+	 * enable modern ui
+	 *
+	 * @param boolean $bool 
+	 * @return void
 	 */
 	public function ui($bool = true) {
 		$this->options['ui'] = $bool;
@@ -46,7 +71,10 @@ class truefalse extends base {
 	}
 
 	/**
-	 * @help: set on text of modern ui. only works if ui = 1
+	 * set "on"-text on modern ui. only works if "ui" is true
+	 *
+	 * @param string $string "On"-Text
+	 * @return void
 	 */
 	public function ui_on_text($string) {
 		$this->options['ui_on_text'] = $string;
@@ -54,7 +82,10 @@ class truefalse extends base {
 	}
 
 	/**
-	 * @help: set off text of modern ui. only works if ui = 1
+	 * set "off"-text on modern ui. only works if "ui" is true
+	 *
+	 * @param string $string "Off"-Text
+	 * @return void
 	 */
 	public function ui_off_text($string) {
 		$this->options['ui_off_text'] = $string;

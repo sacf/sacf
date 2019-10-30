@@ -9,9 +9,12 @@
 
 namespace sacf;
 
+/**
+ * optionspage
+ */
 class optionspage {
 
-	private $args = array();
+	private $args = array(); ///< args array
 
 	/**
 	 * Creates a new ACF options page
@@ -44,7 +47,7 @@ class optionspage {
 	 * Set an individual page title
 	 *
 	 * @param string $string
-	 * @return sacf\optionspage
+	 * @return `sacf\optionspage`
 	 */
 	public function page_title($string) {
 		$this->args['page_title'] = $string;
@@ -55,7 +58,7 @@ class optionspage {
 	 * Set your own capabilities
 	 *
 	 * @param string $string
-	 * @return sacf\optionspage
+	 * @return `sacf\optionspage`
 	 */
 	public function capability($string) {
 		$this->args['capability'] = $string;
@@ -65,7 +68,7 @@ class optionspage {
 	/**
 	 * Set capabilities to show page only for admins: manage_options
 	 *
-	 * @return sacf\optionspage
+	 * @return `sacf\optionspage`
 	 */
 	public function is_admin() {
 		return $this->capability('manage_options');
@@ -75,7 +78,7 @@ class optionspage {
 	 * Set a different menu position https://developer.wordpress.org/reference/functions/add_menu_page/#menu-structure
 	 *
 	 * @param int $int (optional)
-	 * @return sacf\optionspage
+	 * @return `sacf\optionspage`
 	 */
 	public function position($int = 50) {
 		$this->args['position'] = $int;
@@ -86,7 +89,7 @@ class optionspage {
 	 * Set an individual menu icon https://developer.wordpress.org/resource/dashicons/#carrot
 	 *
 	 * @param string $string (optional)
-	 * @return sacf\optionspage
+	 * @return `sacf\optionspage`
 	 */
 	public function icon($string = 'dashicons-edit') {
 		$this->args['icon_url'] = $string;
@@ -97,7 +100,7 @@ class optionspage {
 	 * Set as subpage of a page slug
 	 *
 	 * @param string $string
-	 * @return sacf\optionspage
+	 * @return `sacf\optionspage`
 	 */
 	public function parent($string) {
 		if ($string instanceof \sacf\optionspage) {
@@ -112,7 +115,7 @@ class optionspage {
 	 * Set to false if you also want to use the main page when subpages are available
 	 *
 	 * @param bool $bool (optional)
-	 * @return sacf\optionspage
+	 * @return `sacf\optionspage`
 	 */
 	public function redirect($bool = false) {
 		$this->args['redirect'] = $bool;
@@ -122,7 +125,7 @@ class optionspage {
 	/**
 	 * Registers the options page
 	 *
-	 * @return sacf\optionspage
+	 * @return `sacf\optionspage`
 	 */
 	public function register() {
 		if (function_exists('acf_add_options_page')) {

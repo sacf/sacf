@@ -1,32 +1,32 @@
 <br>
 <div class="acf-columns-2">
-    <div class="acf-column-1">
-        <div class="acf-box">
-            <div class="title">
-                <h3>Groups</h3>
-            </div>
-            <div class="inner">
-                <p>Define field groups in SACF.</p>
-                <?php sacf\admin\render_example('example-groups.php'); ?>
-            </div>
-        </div>
-        <br>
-        <div class="acf-box">
-            <div class="title">
-                <h3>Options page</h3>
-            </div>
-            <div class="inner">
-                <p>Use the ACF Pro opion pages.</p>
-                <?php sacf\admin\render_example('example-options.php'); ?>
-            </div>
-        </div>
-    </div>
-    <div class="acf-column-2">
-        <div class="acf-box">
-            <div class="title">
-                <h3>API in short</h3>
-            </div>
-            <div class="inner">
+	<div class="acf-column-1">
+		<div class="acf-box">
+			<div class="title">
+				<h3>Groups</h3>
+			</div>
+			<div class="inner">
+				<p>Define field groups in SACF.</p>
+				<?php sacf\admin\render_example('example-groups.php');?>
+			</div>
+		</div>
+		<br>
+		<div class="acf-box">
+			<div class="title">
+				<h3>Options page</h3>
+			</div>
+			<div class="inner">
+				<p>Use the ACF Pro opion pages.</p>
+				<?php sacf\admin\render_example('example-options.php');?>
+			</div>
+		</div>
+	</div>
+	<div class="acf-column-2">
+		<div class="acf-box">
+			<div class="title">
+				<h3>API in short</h3>
+			</div>
+			<div class="inner">
 <pre><code>sacf\group($title, $name)
   ->help()
   ->menu_order()
@@ -53,7 +53,7 @@
   ->on_user_form()
   ->on_user_role()
   ->register();</code></pre>
-            </div>
-        </div>
-    </div>
+			</div>
+		</div>
+	</div>
 </div>

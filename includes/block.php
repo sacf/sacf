@@ -9,10 +9,14 @@
 
 namespace sacf;
 
+/**
+ * a gutenberg block
+ */
 class block {
 
-	private $args = array();
-	private $custom_template_partial = false;
+
+	private $args = array(); ///< args
+	private $custom_template_partial = false; ///< flag: custom template partial
 
 	/**
 	 * Creates a new gutenberg block for ACF field groups
@@ -41,7 +45,7 @@ class block {
 	 * Sets block description
 	 *
 	 * @param string $string
-	 * @return sacf\block
+	 * @return sacf/block
 	 */
 	public function description($string) {
 		$this->args['description'] = $string;
@@ -52,7 +56,7 @@ class block {
 	 * Sets block category
 	 *
 	 * @param string $string
-	 * @return sacf\block
+	 * @return sacf/block
 	 */
 	public function category($string) {
 		$this->args['category'] = $string;
@@ -63,7 +67,7 @@ class block {
 	 * Sets block icon
 	 *
 	 * @param string $string
-	 * @return sacf\block
+	 * @return sacf/block
 	 */
 	public function icon($string) {
 		$this->args['icon'] = $string;
@@ -73,8 +77,8 @@ class block {
 	/**
 	 * Sets block keywords
 	 *
-	 * @param string $string
-	 * @return sacf\block
+	 * @param array $array
+	 * @return sacf/block
 	 */
 	public function keywords($array) {
 		$this->args['keywords'] = $array;
@@ -85,7 +89,7 @@ class block {
 	 * Sets block support modes
 	 *
 	 * @param array $array What to support: array('align' => true, "mode" => true, "html" => true),
-	 * @return sacf\block
+	 * @return sacf/block
 	 */
 	public function supports($array) {
 		$this->args['supports'] = $array;
@@ -96,7 +100,7 @@ class block {
 	 * Sets a custom callback function
 	 *
 	 * @param string $callback
-	 * @return sacf\block
+	 * @return sacf/block
 	 */
 	public function render_callback($callback) {
 		$this->args['render_callback'] = $callback;
@@ -107,7 +111,7 @@ class block {
 	 * Sets a custom rendering template
 	 *
 	 * @param string $file
-	 * @return sacf\block
+	 * @return sacf/block
 	 */
 	public function render_template($file) {
 		$this->custom_template_partial = $file;
@@ -118,7 +122,7 @@ class block {
 	 * Use align
 	 *
 	 * @param bool $bool
-	 * @return sacf\block
+	 * @return sacf/block
 	 */
 	public function use_align($bool = true) {
 		$this->args['supports']['align'] = $bool;
@@ -129,7 +133,7 @@ class block {
 	 * Use mode
 	 *
 	 * @param bool $bool
-	 * @return sacf\block
+	 * @return sacf/block
 	 */
 	public function use_mode($bool = true) {
 		$this->args['supports']['mode'] = $bool;
@@ -140,7 +144,7 @@ class block {
 	 * Use html
 	 *
 	 * @param bool $bool
-	 * @return sacf\block
+	 * @return sacf/block
 	 */
 	public function use_html($bool = true) {
 		$this->args['supports']['html'] = $bool;

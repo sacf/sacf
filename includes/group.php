@@ -9,11 +9,15 @@
 
 namespace sacf;
 
+
+/**
+ * The group class holds the fields
+ */
 class group {
 
-	private $fields = array();
-	private $location = array(array(array('param' => 'post_type', 'operator' => '==', 'value' => 'post')));
-	private $is_default_location = true;
+	private $fields = array(); ///< fields
+	private $location = array(array(array('param' => 'post_type', 'operator' => '==', 'value' => 'post'))); ///< where is this grop shown
+	private $is_default_location = true; 
 	private $defaults = array(
 		'menu_order' => 0,
 		'position' => 'normal', // side
@@ -25,10 +29,10 @@ class group {
 		'description' => '',
 		'local_sacf' => true, // adds local sacf value
 	);
-	public $label; // the groups title
-	public $name; // the groups id
-	public $key;
-	protected static $group_count = 0;
+	public $label; ///< the groups title
+	public $name; ///< the groups id
+	public $key; ///< the groups key
+	protected static $group_count = 0; ///< group count for menu order
 
 	/**
 	 * Creates a new ACF field group
@@ -46,9 +50,8 @@ class group {
 
 	/**
 	 * Sets manually sorting of field groups
-	 * @param int $int
-	 * @return sacf\group
-	 * @help: sets manually sorting of field groups: 0, 1, 2, ...
+	 * @param int $int 0, 1, 2, ...
+	 * @return sacf/group 
 	 */
 	public function menu_order($int) {
 		$this->defaults['menu_order'] = $int;
@@ -56,9 +59,8 @@ class group {
 	}
 	/**
 	 * Sets group position
-	 * @param string $string (optional) Available values: normal, acf_after_title, side
-	 * @return sacf\group
-	 * @help: sets fieldgroup position: normal, acf_after_title, side
+	 * @param string $string (optional) Available values: `normal`, `acf_after_title`, `side`
+	 * @return sacf/group
 	 */
 	public function position($string = 'side') {
 		$this->defaults['position'] = $string;
@@ -67,9 +69,8 @@ class group {
 
 	/**
 	 * Sets fieldgroup box style
-	 * @param string $string (optional) Available values: default, seamless
-	 * @return sacf\group
-	 * @help: sets fieldgroup box style: default, seamless
+	 * @param string $string (optional) Available values: `default`, `seamless`
+	 * @return sacf\\group
 	 */
 	public function style($string = 'seamless') {
 		$this->defaults['style'] = $string;
@@ -77,9 +78,8 @@ class group {
 	}
 	/**
 	 * Sets label placement
-	 * @param string $string (optional) Available values: top, left
-	 * @return sacf\group
-	 * @help: sets label placement: top, left
+	 * @param string $string (optional) Available values: `top`, `left`
+	 * @return sacf/group
 	 */
 	public function label_placement($string = 'left') {
 		$this->defaults['label_placement'] = $string;
@@ -88,9 +88,8 @@ class group {
 
 	/**
 	 * Sets instruction placement
-	 * @param string $string (optional) Available values: label, field
-	 * @return sacf\group
-	 * @help: sets instruction placement: label, field
+	 * @param string $string (optional) Available values: `label`, `field`
+	 * @return sacf/group
 	 */
 	public function instruction_placement($string = 'field') {
 		$this->defaults['instruction_placement'] = $string;
@@ -99,9 +98,8 @@ class group {
 
 	/**
 	 * Hides other meta boxes
-	 * @param array $array
-	 * @return sacf\group
-	 * @help: hides meta boxes: array (	0 => 'permalink', 1 => 'the_content', 2 => 'excerpt', 3 => 'custom_fields', 4 => 'discussion', 5 => 'comments', 6 => 'revisions', 7 => 'slug', 8 => 'author', 9 => 'format', 10 => 'page_attributes', 11 => 'featured_image', 12 => 'categories', 13 => 'tags', 14 => 'send-trackbacks' );
+	 * @param array $array  e.g. `array (	0 => 'permalink', 1 => 'the_content', 2 => 'excerpt', 3 => 'custom_fields', 4 => 'discussion', 5 => 'comments', 6 => 'revisions', 7 => 'slug', 8 => 'author', 9 => 'format', 10 => 'page_attributes', 11 => 'featured_image', 12 => 'categories', 13 => 'tags', 14 => 'send-trackbacks' );`
+	 * @return sacf/group
 	 */
 	public function hide_on_screen($array) {
 		$this->defaults['hide_on_screen'] = $array;
@@ -111,8 +109,7 @@ class group {
 	/**
 	 * Activates field group
 	 * @param bool $bool (optional)
-	 * @return sacf\group
-	 * @help: activates/deactives field group
+	 * @return sacf/group
 	 */
 	public function active($bool = true) {
 		$this->defaults['active'] = $bool;
@@ -121,8 +118,7 @@ class group {
 	/**
 	 * Deactivates field group
 	 * @param bool $bool (optional)
-	 * @return sacf\group
-	 * @help: deactives field group
+	 * @return sacf/group
 	 */
 	public function inactive($bool = false) {
 		return $this->active($bool);
@@ -130,9 +126,8 @@ class group {
 
 	/**
 	 * Sets group description
-	 * @param string $string
-	 * @return sacf\group
-	 * @help: sets a description
+	 * @param string $string description string
+	 * @return sacf/group
 	 */
 	public function description($string) {
 		$this->defaults['description'] = $string;
@@ -154,11 +149,11 @@ class group {
 	/**
 	 * Shows field group on specified location
 	 *
+	 * @todo what should the default location do?
 	 * @param string $p The parameter, eg.: post_type
 	 * @param string $o The operator, eg.: ==
 	 * @param string $v The value, eg.: project
-	 * @return sacf\group
-	 * @help: show this field group if: location(param, operator, value) as strings: (post_type, ==, project) or as acf array
+	 * @return group
 	 */
 	public function location($p, $o = '==', $v = 'post') {
 		// directly set array
@@ -174,10 +169,14 @@ class group {
 		$this->location[][] = $this->create_location_logic($p, $o, $v);
 		return $this;
 	}
+
 	/**
 	 * Alias for location($p, $o, $v)
-	 * @see location($p, $o, $v)
-	 * @help: alias for location
+	 *
+	 * @param string $p The parameter, eg.: post_type
+	 * @param string $o The operator, eg.: ==
+	 * @param string $v The value, eg.: project
+	 * @return group
 	 */
 	public function on($p, $o, $v) {
 		return $this->location($p, $o, $v);
@@ -187,8 +186,7 @@ class group {
 	 * @param string $p The parameter, eg.: post_type
 	 * @param string $o The operator, eg.: ==
 	 * @param string $v The value, eg.: project
-	 * @return sacf\group
-	 * @help: add AND rule to location setting
+	 * @return sacf/group
 	 */
 	public function  and ($p, $o, $v) {
 		$this->location[sizeof($this->location) - 1][] = $this->create_location_logic($p, $o, $v);
@@ -199,15 +197,18 @@ class group {
 	 * @param string $p The parameter, eg.: post_type
 	 * @param string $o The operator, eg.: ==
 	 * @param string $v The value, eg.: project
-	 * @return sacf\group
-	 * @help: adds OR rule to location setting
+	 * @return sacf/group
 	 */
 	public function  or ($p, $o, $v) {
 		return $this->location($p, $o, $v);
 	}
 
 	/**
-	 * @help: clone field group for reuse
+	 * clone field group for reuse
+	 *
+	 * @param string $new_label
+	 * @param string $new_name
+	 * @return void
 	 * @todo checkout - ask mo?
 	 */
 	public function copy($new_label, $new_name) {
@@ -220,9 +221,8 @@ class group {
 
 	/**
 	 * Adds a field to this group
-	 * @param sacf\field\base $field A SACF field
-	 * @return sacf\group
-	 * @help: adds fields to field group
+	 * @param sacf\\field\\base $field A SACF field
+	 * @return sacf\\group
 	 */
 	public function add($field) {
 		$this->fields[] = $field;
@@ -231,8 +231,7 @@ class group {
 
 	/**
 	 * Registers a fieldgroup with ACFs acf_add_local_field_group function
-	 * @return sacf\group
-	 * @help: registers a fieldgroup with ACFs acf_add_local_field_group function
+	 * @return sacf\\group
 	 */
 	public function register() {
 		if (function_exists('acf_add_local_field_group')) {
@@ -264,8 +263,7 @@ class group {
 	/**
 	 * Shows fieldgroup on post type
 	 * @param string $v The post type slug
-	 * @return sacf\group
-	 * @help: shows fieldgroup on post type
+	 * @return sacf\\group
 	 */
 	public function on_post_type($v = 'post') {
 		return $this->on('post_type', '==', $v);
@@ -273,8 +271,7 @@ class group {
 	/**
 	 * Shows fieldgroup on post template
 	 * @param string $v The post template slug
-	 * @return sacf\group
-	 * @help: shows fieldgroup on post template
+	 * @return sacf\\group
 	 */
 	public function on_post_template($v = 'default') {
 		return $this->on('post_template', '==', $v);
@@ -282,17 +279,14 @@ class group {
 	/**
 	 * Shows fieldgroup on page template
 	 * @param string $v The page template slug
-	 * @return sacf\group
-	 * @help: shows fieldgroup on page template
+	 * @return sacf\\group
 	 */
 	public function on_page_template($v = 'default') {
 		return $this->on('page_template', '==', $v);
 	}
 	/**
 	 * Shows fieldgroup on front page
-	 * @param string $v The post type slug
-	 * @return sacf\group
-	 * @help: shows fieldgroup on front page
+	 * @return sacf\\group
 	 */
 	public function on_front_page() {
 		return $this->on('page_type', '==', 'front_page');
@@ -300,8 +294,7 @@ class group {
 	/**
 	 * Shows fieldgroup in ACF Gutenberg block
 	 * @param string $v The block slug
-	 * @return sacf\group
-	 * @help: shows fieldgroup in ACF Gutenberg block
+	 * @return sacf\\group
 	 */
 	public function on_block($v) {
 		$v = preg_replace('/^acf\//', '', $v);
@@ -310,8 +303,7 @@ class group {
 	/**
 	 * Shows fieldgroup on options page
 	 * @param string $v The options page slug
-	 * @return sacf\group
-	 * @help: shows fieldgroup on options page
+	 * @return sacf\\group
 	 */
 	public function on_options($v) {
 		// get options slug
@@ -323,8 +315,7 @@ class group {
 	/**
 	 * Shows fieldgroup on user page
 	 * @param string $v The user form page
-	 * @return sacf\group
-	 * @help: shows fieldgroup on user page
+	 * @return sacf\\group
 	 */
 	public function on_user_form($v = 'all') {
 		return $this->on('user_form', '==', $v);
@@ -332,8 +323,7 @@ class group {
 	/**
 	 * Shows fieldgroup only for certain roles
 	 * @param string $v The users role
-	 * @return sacf\group
-	 * @help: shows fieldgroup only for certain roles
+	 * @return sacf\\group
 	 */
 	public function on_user_role($v = 'administrator') {
 		return $this->on('user_role', '==', $v);
@@ -349,7 +339,7 @@ class group {
 
 	/**
 	 * Displays all useful functions for this class in admin interface
-	 * @return sacf\group
+	 * @return sacf\\group
 	 */
 	public function help() {
 		\sacf\utils::help_for_group($this);
@@ -358,7 +348,7 @@ class group {
 
 	/**
 	 * Var_dumps groups data array for debuggin
-	 * @return sacf\group
+	 * @return sacf\\group
 	 */
 	public function dump() {
 		$groups = $this->make();

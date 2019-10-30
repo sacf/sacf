@@ -2,7 +2,7 @@
 
 /**
  * Some templating helper functions
- * @package sacf\api
+ * @package sacf/api
  */
 
 /**
