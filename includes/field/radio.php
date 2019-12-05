@@ -20,7 +20,7 @@ class radio extends base {
 
 	protected $defaults = array(
 		'choices' => array(),
-		'default_value' => array(),
+		'default_value' => '',
 		'layout' => 'vertical',
 		'other_choice' => 0,
 		'save_other_choice' => 0,
@@ -47,13 +47,13 @@ class radio extends base {
 	}
 
 	/**
-	 * set default values
+	 * set default value
 	 *
-	 * @param array $array eg: <code>array ( 'red' => 'red', 'yellow' => 'yellow' )</code>
+	 * @param string $string eg: <code>'red'</code>
 	 * @return void
 	 */
-	public function default_value($array) {
-		$this->options['default_value'] = $array;
+	public function default_value($string) {
+		$this->options['default_value'] = $string;
 		return $this;
 	}
 
