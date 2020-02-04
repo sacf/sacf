@@ -17,7 +17,7 @@ class group {
 
 	private $fields = array(); ///< fields
 	private $location = array(array(array('param' => 'post_type', 'operator' => '==', 'value' => 'post'))); ///< where is this grop shown
-	private $is_default_location = true; 
+	private $is_default_location = true;
 	private $defaults = array(
 		'menu_order' => 0,
 		'position' => 'normal', // side
@@ -51,7 +51,7 @@ class group {
 	/**
 	 * Sets manually sorting of field groups
 	 * @param int $int 0, 1, 2, ...
-	 * @return sacf/group 
+	 * @return sacf/group
 	 */
 	public function menu_order($int) {
 		$this->defaults['menu_order'] = $int;
@@ -188,7 +188,7 @@ class group {
 	 * @param string $v The value, eg.: project
 	 * @return sacf/group
 	 */
-	public function  and ($p, $o, $v) {
+	public function and($p, $o, $v) {
 		$this->location[sizeof($this->location) - 1][] = $this->create_location_logic($p, $o, $v);
 		return $this;
 	}
@@ -199,7 +199,7 @@ class group {
 	 * @param string $v The value, eg.: project
 	 * @return sacf/group
 	 */
-	public function  or ($p, $o, $v) {
+	public function or($p, $o, $v) {
 		return $this->location($p, $o, $v);
 	}
 
@@ -327,6 +327,13 @@ class group {
 	 */
 	public function on_user_role($v = 'administrator') {
 		return $this->on('user_role', '==', $v);
+	}
+	/**
+	 * Shows fieldgroup only on attachments
+	 * @return sacf\\group
+	 */
+	public function on_attachment() {
+		return $this->on('attachment', '==', 'image');
 	}
 
 	/**

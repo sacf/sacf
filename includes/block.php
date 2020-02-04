@@ -97,6 +97,61 @@ class block {
 	}
 
 	/**
+	 * An array of post types to restrict this block type to
+	 *
+	 * @param array $array
+	 * @return sacf\block
+	 */
+	public function post_types(array $array) {
+		$this->args['post_types'] = $array;
+		return $this;
+	}
+
+	/**
+	 * Sets blocks mode
+	 *
+	 * @param string $string auto | preview | edit
+	 * @return sacf\block
+	 */
+	public function mode($string) {
+		$this->args['mode'] = $string;
+		return $this;
+	}
+
+	/**
+	 * Sets blocks alignment
+	 *
+	 * @param string $string full | wide | left | center | right
+	 * @return sacf\block
+	 */
+	public function align($string) {
+		$this->args['align'] = $string;
+		return $this;
+	}
+
+	/**
+	 * The url to a .css file to be enqueued whenever your block is displayed (front-end and back-end).
+	 *
+	 * @param string $string
+	 * @return sacf\block
+	 */
+	public function enqueue_style($string) {
+		$this->args['enqueue_style'] = $string;
+		return $this;
+	}
+
+	/**
+	 * The url to a .js file to be enqueued whenever your block is displayed (front-end and back-end).
+	 *
+	 * @param string $string
+	 * @return sacf\block
+	 */
+	public function enqueue_script($string) {
+		$this->args['enqueue_script'] = $string;
+		return $this;
+	}
+
+	/**
 	 * Sets a custom callback function
 	 *
 	 * @param string $callback
@@ -158,8 +213,8 @@ class block {
 	 */
 	public function register() {
 		add_action('acf/init', function () {
-			if (function_exists('acf_register_block')) {
-				acf_register_block($this->args);
+			if (function_exists('acf_register_block_type')) {
+				acf_register_block_type($this->args);
 			}
 		});
 	}
@@ -168,9 +223,12 @@ class block {
 	 * The default render callback that renders template partials from theme-folder/parts/acf-blocks/blockname.php
 	 *
 	 * @param array $block The WP block
+	 * @param string $content The rendered WP block
+	 * @param bool $is_preview
+	 * @param int $post_id The post ID
 	 * @return void
 	 */
-	public function default_render_callback($block) {
+	public function default_render_callback($block, $content = '', $is_preview = false, $post_id = 0) {
 		if ($this->custom_template_partial) {
 			$file = $this->custom_template_partial;
 		} else {
