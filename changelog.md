@@ -1,8 +1,13 @@
 # Changelog
 
+## 2.0.1
+* fixed googlemaps field type
+* fixed number and range field
+* fixed block to use correct params
+
 ## 2.0.0
-* initial public built
-* rebuilt whole plugin for publishing
+* initial public build
+* rebuild whole plugin for publishing
 * got rid of unused code
 * renamed and restructured namespaces
 
@@ -47,7 +52,7 @@
 * added helper functions for backend and frontend
 * added generic fieldplugin class
 * added warning if ACF is not activated
-* rebuilt all fields based on ACF Pro v5.2.7
+* rebuild all fields based on ACF Pro v5.2.7
 
 ## 0.2.0
 fixes and addons
