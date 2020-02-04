@@ -6,7 +6,6 @@
  * @package sacf/fields
  * @since 2.0.0
  * @version 2.0.0
- * @todo aren't the steps float values? This field is not working!
  *
  */
 namespace sacf\field;
@@ -14,13 +13,16 @@ namespace sacf\field;
 /**
  * Select-Field: Range
  */
-class range extends text {
+class range extends base {
 
-	protected $defaults = array( 
+	protected $defaults = array(
 		'min' => '',
 		'max' => '',
 		'step' => '',
 		'default_value' => '',
+		'placeholder' => '',
+		'prepend' => '',
+		'append' => '',
 	); ///< defaults
 
 	/**
@@ -45,9 +47,42 @@ class range extends text {
 	}
 
 	/**
+	 * set placeholder text
+	 *
+	 * @param string $string placeholder
+	 * @return void
+	 */
+	public function placeholder($string) {
+		$this->options['placeholder'] = $string;
+		return $this;
+	}
+
+	/**
+	 * prepend text to input field
+	 *
+	 * @param string $string text to prepend
+	 * @return void
+	 */
+	public function prepend($string) {
+		$this->options['prepend'] = $string;
+		return $this;
+	}
+
+	/**
+	 * append text to input field
+	 *
+	 * @param string $string text to append
+	 * @return void
+	 */
+	public function append($string) {
+		$this->options['append'] = $string;
+		return $this;
+	}
+
+	/**
 	 * set minimum value in int
 	 *
-	 * @param int $int
+	 * @param float $int
 	 * @return void
 	 */
 	public function min($int) {
@@ -58,14 +93,14 @@ class range extends text {
 	/**
 	 * set minimum value in int
 	 *
-	 * @param int $int
+	 * @param float $int
 	 * @return void
 	 */
 	public function max($int) {
 		$this->options['max'] = $int;
 		return $this;
 	}
-	
+
 	/**
 	 * set stepper value in int
 	 *
