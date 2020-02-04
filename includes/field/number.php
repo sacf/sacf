@@ -2,11 +2,10 @@
 
 /**
  * File: Number
- * 
+ *
  * @package sacf/fields
  * @since 2.0.0
  * @version 2.0.0
- * @todo min / max / steps as float? 
  */
 
 namespace sacf\field;
@@ -15,13 +14,16 @@ namespace sacf\field;
  * Text Field: Number
  */
 
-class number extends text {
+class number extends base {
 
 	protected $defaults = array(
 		'min' => '',
 		'max' => '',
 		'step' => '',
 		'default_value' => '',
+		'placeholder' => '',
+		'prepend' => '',
+		'append' => '',
 	); ///< defaults
 
 	/**
@@ -46,31 +48,64 @@ class number extends text {
 	}
 
 	/**
+	 * set placeholder text
+	 *
+	 * @param string $string placeholder
+	 * @return void
+	 */
+	public function placeholder($string) {
+		$this->options['placeholder'] = $string;
+		return $this;
+	}
+
+	/**
+	 * prepend text to input field
+	 *
+	 * @param string $string text to prepend
+	 * @return void
+	 */
+	public function prepend($string) {
+		$this->options['prepend'] = $string;
+		return $this;
+	}
+
+	/**
+	 * append text to input field
+	 *
+	 * @param string $string text to append
+	 * @return void
+	 */
+	public function append($string) {
+		$this->options['append'] = $string;
+		return $this;
+	}
+
+	/**
 	 * Set the minimum value
 	 *
-	 * @param int $int min value
+	 * @param float $int min value
 	 * @return void
 	 */
 	public function min($int) {
 		$this->options['min'] = $int;
 		return $this;
 	}
-	
+
 	/**
 	 * Set the maximum value
 	 *
-	 * @param int $int max value
+	 * @param float $int max value
 	 * @return void
 	 */
 	public function max($int) {
 		$this->options['max'] = $int;
 		return $this;
 	}
-	
+
 	/**
 	 * Set the step size
 	 *
-	 * @param int $int min step size
+	 * @param float $int min step size
 	 * @return void
 	 */
 	public function step($int) {
