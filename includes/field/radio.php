@@ -63,7 +63,7 @@ class radio extends base {
 	 * @param string $string <code>vertical</code> or <code>horizontal</code>
 	 * @return void
 	 */
-	public function layout($string) {
+	public function layout($string = 'horizontal') {
 		$this->options['layout'] = $string;
 		return $this;
 	}
@@ -71,7 +71,7 @@ class radio extends base {
 	/**
 	 * add other choice to allow for custom values
 	 *
-	 * @param boolean $bool 
+	 * @param boolean $bool
 	 * @return void
 	 */
 	public function other_choice($bool) {
@@ -80,7 +80,7 @@ class radio extends base {
 	}
 
 	/**
-	 * save other value to the fields' choices 
+	 * save other value to the fields' choices
 	 *
 	 * @param boolean $bool
 	 * @return void

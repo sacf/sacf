@@ -2,21 +2,21 @@
 
 /**
  * File: File
- * 
+ *
  * @package sacf/fields
  * @since 2.0.0
  * @version 2.0.0
- * 
+ *
  */
 
 namespace sacf\field;
 
 /**
- * Select Field: Filed
+ * Select Field: File
  */
 class file extends base {
 
-	protected $defaults = array( 
+	protected $defaults = array(
 		'save_format' => 'object',
 		'return_format' => 'array',
 		'library' => 'all',
@@ -80,8 +80,8 @@ class file extends base {
 	}
 
 	/**
-	 * Comma separated list of allowed filetypes. 
-	 * 
+	 * Comma separated list of allowed filetypes.
+	 *
 	 * @param string $string comma seperated list of file types, e.g. <code>jpg, gif, png</code>
 	 * @return void
 	 */
