@@ -2,11 +2,11 @@
 
 /**
  * File: Accordion field
- * 
+ *
  * @package sacf/fields
  * @since 2.0.0
  * @version 2.0.0
- * 
+ *
  */
 
 namespace sacf\field;
@@ -17,7 +17,7 @@ namespace sacf\field;
  */
 class accordion extends base {
 
-	
+
 	protected $defaults = array(
 		'open' => 0,
 		'multi_expand' => 0,
@@ -26,7 +26,7 @@ class accordion extends base {
 
 	/**
 	 * Constructor method
-	 * 
+	 *
 	 * @param string $label Label for this field
 	 * @param string $name Name for this field (optional - sanitized label if empty)<br>Used in <code>get_field('field_name')</code>
 	 */
@@ -37,11 +37,11 @@ class accordion extends base {
 	/**
 	 * Display this accordion as open on page load.
 	 *
-	 * @param boolean $bool is open on page load 
+	 * @param boolean $bool is open on page load
 	 * @return void
 	 */
 	public function open($bool = true) {
-		$this->options['open'] = $openOnPageLoad;
+		$this->options['open'] = $bool;
 		return $this;
 	}
 
