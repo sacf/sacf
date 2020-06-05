@@ -61,7 +61,7 @@ class message extends base {
 	 * @return void
 	 */
 	public function esc_html($bool = true) {
-		$this->options['esc_html'] = $book;
+		$this->options['esc_html'] = $bool;
 		return $this;
 	}
 }
