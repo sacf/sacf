@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.2
+* fixed accordion field
+* fixed message field
+* fixed sacf_get_template_part
+* readded flexcontentmodule
+
 ## 2.0.1
 * fixed googlemaps field type
 * fixed number and range field
