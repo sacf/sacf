@@ -5,6 +5,8 @@ Building upon the [Advanced Custom Fields](https://www.advancedcustomfields.com/
 
 > You still need a license for the official ACF plugin to use SACF!
 
+Be aware that we are creating the field IDs using their slugs.
+
 ## Installation
 
 1. Upload to the "wp-content/plugins/" directory.
