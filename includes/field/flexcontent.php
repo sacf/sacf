@@ -110,6 +110,42 @@ class flexcontent extends base {
 		return $this;
 	}
 
+
+	/**
+	 * Adds a whole flexible content module
+	 *
+	 * @param class $module Must be of type flexcontentmodule
+	 */
+	public function add_module($module) {
+		if (!($module instanceof \sacf\flexcontentmodule)) {
+			return $this;
+		}
+
+		// add flexcontent layout
+		$this->add_layout($module->label, $module->name, $module->display, $module->min, $module->max);
+
+		// add first tab if module has options
+		if (sizeof($module->options) !== 0) {
+			$this->add(new tab($module->label, $module->name.'_tab_content'), $module->name);
+		}
+
+		// add modules
+		foreach ($module->fields as $field) {
+			$this->add($field, $module->name);
+		}
+
+		// add module options
+		if (sizeof($module->options) !== 0) {
+			$this->add(new tab('Options', $module->name.'_tab_options'), $module->name);
+			foreach ($module->options as $field) {
+				$this->add($field, $module->name);
+			}
+		}
+
+		return $this;
+	}
+
+
 	/**
 	 * build a layout from parameters
 	 *
