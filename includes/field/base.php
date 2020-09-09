@@ -5,7 +5,7 @@
  *
  * @package sacf/fields
  * @since 2.0.0
- * @version 2.0.0
+ * @version 2.0.2
  *
  */
 
@@ -17,7 +17,7 @@ namespace sacf\field;
 class base {
 
 
-	public $label; 	///< label for this field 
+	public $label; 	///< label for this field
 	public $name; 	///< name for this field
 	public $type; 	///< type of this field
 	public $key; 	///< key for this field
@@ -38,7 +38,7 @@ class base {
 	protected $defaults = array(); ///< defaults
 	protected $options = array(); ///< options
 
-	
+
 	/**
 	 * Create a new field of a given type
 	 *
@@ -107,6 +107,23 @@ class base {
 	 */
 	public function id($string) {
 		$this->base_args['wrapper']['id'] = $string;
+		return $this;
+	}
+
+
+	/**
+	 * Add field specific css, eg: {{field}} { width: 50%; float: left; clear: none; }
+	 *
+	 * @param string $css
+	 * @return void
+	 */
+	public function css($css) {
+		$css = str_replace("{{field}}", '.acf-field[data-name="'.$this->name.'"]', $css);
+		add_action('acf/input/admin_head', function() use ($css){
+			echo '<style type="text/css">';
+			echo $css;
+			echo '</style>';
+		});
 		return $this;
 	}
 
@@ -276,12 +293,12 @@ class base {
 		if($label) {
 			$clone->label = $label;
 		}
-		
+
 		if($name) {
 			$clone->name = $name;
 			$clone->make_key($name);
 		}
-		
+
 		return $clone;
 	}
 

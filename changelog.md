@@ -5,6 +5,7 @@
 * fixed message field
 * fixed sacf_get_template_part
 * readded flexcontentmodule
+* added css function to base class
 
 ## 2.0.1
 * fixed googlemaps field type
