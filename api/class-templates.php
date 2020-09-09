@@ -29,10 +29,10 @@ class templates {
 			$path = trailingslashit(settings::paths()['parts-layouts']) . $field_name;
 		} else if (preg_match('/^(\/.*\/)$/', $slug)) {
 			// from root and is path
-			$path = get_template_directory() . $slug . $field_name;
+			$path = get_stylesheet_directory() . $slug . $field_name;
 		} else if (preg_match('/^\//', $slug)) {
 			// from root and is filename
-			$path = get_template_directory() . $slug;
+			$path = get_stylesheet_directory() . $slug . $field_name;
 		} else if (preg_match('/\/$/', $slug)) {
 			// add path
 			$path = trailingslashit(settings::paths()['parts-layouts']) . $slug . $field_name;
@@ -80,7 +80,7 @@ class templates {
 			self::get_template_part_repeater($field_name, $slug, $name, $data, $is_sub_field);
 			break;
 		case 'flexible_content':
-			self::get_template_part_flex_content($field_name, $slug, $name, $data);
+			self::get_template_part_flex_content($field_name, $slug, $name, $data, $is_sub_field);
 			break;
 		default:
 			echo '<code class="error">';
@@ -110,9 +110,9 @@ class templates {
 	public static function get_template_part_repeater($field_name, $slug = null, $name = null, $data = null, $is_sub_field = false) {
 		global $post;
 		if ($is_sub_field) {
-			$data['amount'] = count(get_sub_field($field_name));
+			$data['amount'] = get_sub_field($field_name) ? count(get_sub_field($field_name)) : 0;
 		} else {
-			$data['amount'] = count(get_field($field_name));
+			$data['amount'] = get_field($field_name) ? count(get_field($field_name)) : 0;
 		}
 
 		if (have_rows($field_name)) {
@@ -154,10 +154,14 @@ class templates {
 	 * @param array  $data 				Additional data parameters
 	 * @return void|bool
 	 */
-	public static function get_template_part_flex_content($field_name, $slug = null, $name = null, $data = null) {
+	public static function get_template_part_flex_content($field_name, $slug = null, $name = null, $data = null, $is_sub_field = false) {
 		global $post;
 
-		$data['amount'] = count(get_field($field_name));
+		if ($is_sub_field) {
+			$data['amount'] = get_sub_field($field_name) ? count(get_sub_field($field_name)) : 0;
+		} else {
+			$data['amount'] = get_field($field_name) ? count(get_field($field_name)) : 0;
+		}
 
 		if (have_rows($field_name)) {
 			$index = 0;
