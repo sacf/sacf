@@ -17,7 +17,6 @@ namespace sacf\field;
 class file extends base {
 
 	protected $defaults = array(
-		'save_format' => 'object',
 		'return_format' => 'array',
 		'library' => 'all',
 		'min_size' => '',
