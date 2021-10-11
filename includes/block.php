@@ -254,13 +254,15 @@ class block {
 	 * @return void
 	 */
 	public static function new_category($title, $slug) {
-		add_filter('block_categories', function ($categories, $post) use ($title, $slug) {
+		global $wp_version;
+		$hook_name = version_compare($wp_version, '5.8') >= 0 ? 'block_categories_all' : 'block_categories';
+		add_filter($hook_name, function ($categories) use ($title, $slug) {
 			$new_category = array(array(
 				'slug' => $slug,
 				'title' => $title,
 			));
 			return array_merge($categories, $new_category);
-		}, 10, 2);
+		}, 10, 1);
 
 	}
 }
