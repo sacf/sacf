@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.3
+* fixed save_format overwrote the return_format
+* fixed deprecated block_categories hook since WP 5.8
+
 ## 2.0.2
 * fixed accordion field
 * fixed message field
