@@ -13,14 +13,26 @@
 
 namespace sacf;
 
+/**
+ * flexcontentmodule
+ */
 class flexcontentmodule {
 
-	public $label = '';
-	public $name = '';
-	public $display = '';
-	public $fields = array();
-	public $options = array();
-
+	public $label = ''; ///< label
+	public $name = ''; ///< name
+	public $display = ''; ///< display
+	public $fields = array();  ///< fields
+	public $options = array(); ///< options
+	
+	/**
+	 * Create a new flexcontentmodule of a given type
+	 *
+	 * @param string $label Label for this field
+	 * @param string $name Name for this field (optional - sanitized label if empty)<br>Used in <code>get_field('field_name')</code>
+	 * @param string $display how to display this field
+	 * @param int  	 $min minimum amount of fields
+	 * @param int    $max maximum amount of fields
+	 */
 	public function __construct($label, $name=false, $display='row', $min='', $max='') {
 		$this->label = $label;
 		$this->name = $name ? sanitize_title($name) : sanitize_title('module_'.$label);
@@ -29,12 +41,22 @@ class flexcontentmodule {
 		$this->max = $max;
 		return $this;
 	}
-
+	
+	/**
+	 * add a new field to the module
+	 *
+	 * @param sacf\field $field
+	 */
 	public function add($field) {
 		$this->fields[] = $field;
 		return $this;
 	}
-
+	
+	/**
+	 * add a new option to the module
+	 *
+	 * @param option $option
+	 */
 	public function add_option($option) {
 		$this->options[] = $option;
 		return $this;

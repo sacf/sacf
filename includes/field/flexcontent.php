@@ -29,7 +29,8 @@ class flexcontent extends base {
 	 * Constructor method
 	 *
 	 * @param string $label Label for this field
-	 * @param String $name Name for this field (optional - sanitized label if empty)<br>Used in `get_field('field_name')`
+	 * @param string $name Name for this field (optional - sanitized label if empty)<br>Used in `get_field('field_name')`
+	 * @param string $type type of this field
 	 */
 	public function __construct($label, $name = false, $type = 'flexible_content') {
 		parent::__construct($label, $name, $type);
