@@ -152,6 +152,7 @@ class templates {
 	 *          path/file, name      => theme/parts/acf/path/file-name.php
 	 * @param string $name (optional)   Template partial suffix
 	 * @param array  $data 				Additional data parameters
+	 * @param bool   $is_sub_field      if repeater is used as subfield
 	 * @return void|bool
 	 */
 	public static function get_template_part_flex_content($field_name, $slug = null, $name = null, $data = null, $is_sub_field = false) {

@@ -27,6 +27,7 @@ class oembed extends base {
 	 *
 	 * @param string $label Label for this field
 	 * @param string $name Name for this field (optional - sanitized label if empty)<br>Used in <code>get_field('field_name')</code>
+	 * @param string $type type of this field
 	 */
 	public function __construct($label, $name = false, $type = 'oembed') {
 		parent::__construct($label, $name, $type);
