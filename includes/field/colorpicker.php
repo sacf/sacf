@@ -40,5 +40,27 @@ class colorpicker extends base {
 		$this->options['default_value'] = $string;
 		return $this;
 	}
+	
+	/**
+	 * Enable opacity 
+	 *
+	 * @param bool $bool is opacity enabled
+	 * @return void
+	 */
+	public function enable_opacity($bool = 1) {
+		$this->options['enable_opacity'] = $bool;
+		return $this;
+	}
+	
+	/**
+	 * Specify the return format on front end
+	 *
+	 * @param string $string <code>string</code>, <code>array</code>
+	 * @return void
+	 */
+	public function return_format($string) {
+		$this->options['return_format'] = $string;
+		return $this;
+	}
 
 }
