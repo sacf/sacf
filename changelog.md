@@ -1,9 +1,12 @@
 # Changelog
 
-## 2.0.4
+## 2.0.4 - 2022-04-20
+* add enable_opacity and return_format to colorpicker field
+* update docs and defaults
 * fixed missing groups in gutenberg blocks when their name was in snake_case
+* updates links on about page
 
-## 2.0.3
+## 2.0.3 - 2021-10-11
 * fixed save_format overwrote the return_format
 * fixed deprecated block_categories hook since WP 5.8
 

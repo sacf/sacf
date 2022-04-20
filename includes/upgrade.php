@@ -26,7 +26,7 @@ class upgrade {
 	}
 
 	/**
-	 * add an admin notice 
+	 * add an admin notice
 	 *
 	 * @param string $text text to show
 	 * @param string $button a button string
@@ -57,7 +57,7 @@ class upgrade {
 			if (isset($_GET["sacf_upgrade_db"]) && boolval($_GET["sacf_upgrade_db"])) {
 				add_action("sacf_after_group_make", [__CLASS__, "fixOldStyleKeys"]);
 				add_action('admin_notices', function () {
-					self::adminNotice(__('Thank you for updating SmartACF.', 'sacf'), false, true);
+					self::adminNotice(__('Thank you for updating SACF.', 'sacf'), false, true);
 					update_option("sacf_version", SACF_VERSION);
 				});
 			} else {
@@ -107,7 +107,7 @@ class upgrade {
 	}
 
 	/**
-	 * fix old keys 
+	 * fix old keys
 	 *
 	 * @param array $fields an array of fields
 	 * @return void
