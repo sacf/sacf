@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.0.4
+* fixed missing groups in gutenberg blocks when their name was in snake_case
+
 ## 2.0.3
 * fixed save_format overwrote the return_format
 * fixed deprecated block_categories hook since WP 5.8

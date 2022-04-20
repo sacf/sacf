@@ -25,7 +25,7 @@ $sacf_block_2 = (new block('An example block', 'example_2'))
  * creates new block: uses custom callback method for rendering
  */
 $sacf_block_3 = (new block('An example block', 'example_3'))
-	->render_callback('\Neonpastell\SmartACF\custom_block_render_callback_example')
+	->render_callback(__NAMESPACE__.'\custom_block_render_callback_example')
 	->register();
 
 /**
@@ -48,7 +48,7 @@ function custom_block_render_callback_example($block) {
 // 2. create group and set location to block
 //
 ////////////////////////////////////
- 
+
 /**
  * creates field group with fields
  */

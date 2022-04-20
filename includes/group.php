@@ -298,7 +298,7 @@ class group {
 	 */
 	public function on_block($v) {
 		$v = preg_replace('/^acf\//', '', $v);
-		return $this->on('block', '==', 'acf/' . $v);
+		return $this->on('block', '==', 'acf/' . sanitize_title(str_replace('_', '-', $v)));
 	}
 	/**
 	 * Shows fieldgroup on options page

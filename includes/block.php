@@ -36,7 +36,7 @@ class block {
 		);
 		$name = $name ? sanitize_title(preg_replace('/^acf\//i', '', $name)) : sanitize_title($title);
 		// parse args
-		$args = wp_parse_args(array('title' => $title, 'name' => $name), $args);
+		$args = wp_parse_args(array('title' => $title, 'name' => str_replace('_', '-', $name)), $args);
 		$this->args = wp_parse_args($args, $args_default);
 		return $this;
 	}
