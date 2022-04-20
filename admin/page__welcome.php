@@ -19,11 +19,11 @@
 				<h3>Resources</h3>
 				<ul>
 					<li><a href="https://www.advancedcustomfields.com" target="_blank"><i aria-hidden="true" class="dashicons dashicons-external"></i> Website ACF</a></li>
-					<li><a href="https://github.com/manuelpiepereit/sacf" target="_blank"><i aria-hidden="true" class="dashicons dashicons-external"></i> Github SACF</a></li>
+					<li><a href="https://github.com/sacf" target="_blank"><i aria-hidden="true" class="dashicons dashicons-external"></i> Github SACF</a></li>
 				</ul>
 			</div>
 			<div class="footer">
-				<p>Supported by Neonpastell and Yeah.</p>
+				<p>Supported by <a href="//yeah.de" target="_blank">Yeah</a> and <a href="//manou.io" target="_blank">Manuel Piepereit</a>.</p>
 			</div>
 		</div>
 	</div>
