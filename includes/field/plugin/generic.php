@@ -3,7 +3,7 @@
 /**
  * A generic plugin field
  * @since 2.0.0
- * @version 2.0.0
+ * @version 2.0.1
  * @package sacf/fields/plugins
  */
 
@@ -25,7 +25,7 @@ class generic extends base {
 	 * @param string $type type of this plugin field
 	 * @param array $options options
 	 */
-	public function __construct($label, $name = false, $type, $options = array()) {
+	public function __construct($label, $name = false, $type = '', $options = array()) {
 		parent::__construct($label, $name, $type);
 		$this->options = $options;
 	}
