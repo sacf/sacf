@@ -24,6 +24,7 @@ class radio extends base {
 		'layout' => 'vertical',
 		'other_choice' => 0,
 		'save_other_choice' => 0,
+		'return_format' => 'value',
 	); ///< defaults
 
 	/**
@@ -88,6 +89,17 @@ class radio extends base {
 	 */
 	public function save_other_choice($bool) {
 		$this->options['save_other_choice'] = $bool;
+		return $this;
+	}
+	
+	/**
+	 * Specify the returned value on front end
+	 *
+	 * @param string $string <code>value</code>, <code>label</code> or <code>array</code>, 
+	 * @return void
+	 */
+	public function return_format($string) {
+		$this->options['return_format'] = $string;
 		return $this;
 	}
 
