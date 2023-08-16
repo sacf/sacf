@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.5 - 2023-08-16
+* various fixes
+* fixes PHP 8.2 deprecation warning
+
 ## 2.0.4 - 2022-04-20
 * add enable_opacity and return_format to colorpicker field
 * update docs and defaults
