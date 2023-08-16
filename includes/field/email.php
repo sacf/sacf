@@ -2,11 +2,10 @@
 
 /**
  * File: E-Mail
- * 
+ *
  * @package sacf/fields
  * @since 2.0.0
- * @version 2.0.0
- * 
+ * @version 2.0.1
  */
 
 namespace sacf\field;
@@ -32,7 +31,6 @@ class email extends base {
 	 */
 	public function __construct($label, $name = false, $type = 'email') {
 		parent::__construct($label, $name, $type);
-		$this->class = "email";
 	}
 
 	/**
@@ -45,7 +43,7 @@ class email extends base {
 		$this->default_value = $string;
 		return $this;
 	}
-	
+
 	/**
 	 * set placeholder text
 	 *
@@ -67,7 +65,7 @@ class email extends base {
 		$this->prepend = $string;
 		return $this;
 	}
-	
+
 	/**
 	 * append text to input field
 	 *
