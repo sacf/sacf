@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.0.6 - 2025-03-19
+* added `show_in_rest`
+
 ## 2.0.5 - 2023-08-16
 * various fixes
 * fixes PHP 8.2 deprecation warning
