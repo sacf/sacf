@@ -4,7 +4,7 @@ Plugin Name: Advanced Custom Fields: SACF
 Plugin URI: https://github.com/sacf
 Description: ACF, but scripted! Building upon the <a href="http://www.advancedcustomfields.com" target="blank">Advanced Custom Fields</a> plugin by Elliot Condon this plugin adds OOP API Code for Developers.
 Author: Manuel Piepereit, Moritz Jacobs, Claus Reiser
-Version: 2.0.6
+Version: 2.0.7
 Text Domain: sacf
 Domain Path: /lang
  */
