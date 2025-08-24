@@ -23,7 +23,9 @@ class flexcontentmodule {
 	public $display = ''; ///< display
 	public $fields = array();  ///< fields
 	public $options = array(); ///< options
-	
+	public $min = null;
+	public $max = null;
+
 	/**
 	 * Create a new flexcontentmodule of a given type
 	 *
@@ -41,7 +43,7 @@ class flexcontentmodule {
 		$this->max = $max;
 		return $this;
 	}
-	
+
 	/**
 	 * add a new field to the module
 	 *
@@ -51,7 +53,7 @@ class flexcontentmodule {
 		$this->fields[] = $field;
 		return $this;
 	}
-	
+
 	/**
 	 * add a new option to the module
 	 *
