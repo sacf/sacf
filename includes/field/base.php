@@ -5,7 +5,7 @@
  *
  * @package sacf/fields
  * @since 2.0.0
- * @version 2.0.2
+ * @version 2.0.6
  *
  */
 
@@ -33,6 +33,7 @@ class base {
 			'class' => '',
 			'id' => '',
 		),
+		'translations' => 'translate',
 	);	///< base options for all fields
 
 	protected $defaults = array(); ///< defaults
@@ -57,7 +58,7 @@ class base {
 	 * set instructions for this field
 	 *
 	 * @param string $string instructions
-	 * @return void
+	 * @return self
 	 */
 	public function instructions($string) {
 		$this->base_args['instructions'] = $string;
@@ -68,7 +69,7 @@ class base {
 	 * set field as required
 	 *
 	 * @param boolean $bool is required
-	 * @return void
+	 * @return self
 	 */
 	public function required($bool = true) {
 		$this->base_args['required'] = $bool;
@@ -81,7 +82,7 @@ class base {
 	 * @param int $width width in px
 	 * @param string $class css class names
 	 * @param string $id css id
-	 * @return void
+	 * @return self
 	 */
 	public function wrapper($width, $class, $id) {
 		$this->base_args['wrapper'] = array('width' => $width, 'class' => $class, 'id' => $id);
@@ -92,7 +93,7 @@ class base {
 	 * add class name for field wrapper
 	 *
 	 * @param string $string css class names
-	 * @return void
+	 * @return self
 	 */
 	public function class($string) {
 		$this->base_args['wrapper']['class'] = $this->base_args['wrapper']['class'].' '.$string;
@@ -103,7 +104,7 @@ class base {
 	 * change id for field wrapper
 	 *
 	 * @param string $string css id
-	 * @return void
+	 * @return self
 	 */
 	public function id($string) {
 		$this->base_args['wrapper']['id'] = $string;
@@ -115,7 +116,7 @@ class base {
 	 * Add field specific css, eg: {{field}} { width: 50%; float: left; clear: none; }
 	 *
 	 * @param string $css
-	 * @return void
+	 * @return self
 	 */
 	public function css($css) {
 		$css = str_replace("{{field}}", '.acf-field[data-name="'.$this->name.'"]', $css);
@@ -131,7 +132,7 @@ class base {
 	 * set width in % for field wrapper
 	 *
 	 * @param int $int
-	 * @return void
+	 * @return self
 	 */
 	public function width($int) {
 		$this->base_args['wrapper']['width'] = $int;
@@ -139,10 +140,21 @@ class base {
 	}
 
 	/**
+	 * set polylang translation logic - find out mor here: https://polylang.pro/doc/working-with-acf-pro/#customize-acf-fields
+	 *
+	 * @param string $string  <code>ignore</code>, <code>copy_once</code>, <code>translate</code> (default), <code>translate_once</code>, <code>sync</code>
+	 * @return self
+	 */
+	public function translations($string) {
+		$this->base_args['translations'] = $string;
+		return $this;
+	}
+
+	/**
 	 * set conditional logic as standard acf array
 	 *
 	 * @param array $array conditional logic as acf array
-	 * @return void
+	 * @return self
 	 */
 	public function conditional_logic($array) {
 		$this->base_args['conditional_logic'] = $array;

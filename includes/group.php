@@ -28,6 +28,7 @@ class group {
 		'active' => 1,
 		'description' => '',
 		'local_sacf' => true, // adds local sacf value
+		'show_in_rest' => 0,
 	);
 	public $label; ///< the groups title
 	public $name; ///< the groups id
@@ -122,6 +123,16 @@ class group {
 	 */
 	public function inactive($bool = false) {
 		return $this->active($bool);
+	}
+	
+	/**
+	 * Show this field group in the rest api
+	 * @param bool $bool (optional)
+	 * @return sacf/group
+	 */
+	public function show_in_rest($bool = true) {
+		$this->defaults['show_in_rest'] = $bool;
+		return $this;
 	}
 
 	/**
