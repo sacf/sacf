@@ -5,7 +5,7 @@
  *
  * @package sacf/fields
  * @since 2.0.0
- * @version 2.0.6
+ * @version 2.0.8
  *
  */
 
@@ -33,7 +33,7 @@ class base {
 			'class' => '',
 			'id' => '',
 		),
-		'translations' => 'translate',
+		'translations' => 'translate_once',
 	);	///< base options for all fields
 
 	protected $defaults = array(); ///< defaults

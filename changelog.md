@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.0.8 - 2025-10-15
+* changed `translations`-property in base class to `translate_once`, since `translate` synchronizes layouts, which can have unwanted side-effects.
+
 ## 2.0.7 - 2025-04-23
 * added `translations`-property to base class for polylang
 
