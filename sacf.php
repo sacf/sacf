@@ -4,7 +4,7 @@ Plugin Name: Advanced Custom Fields: SACF
 Plugin URI: https://github.com/sacf
 Description: ACF, but scripted! Building upon the <a href="http://www.advancedcustomfields.com" target="blank">Advanced Custom Fields</a> plugin by Elliot Condon this plugin adds OOP API Code for Developers.
 Author: Manuel Piepereit, Moritz Jacobs, Claus Reiser
-Version: 2.0.7
+Version: 2.0.8
 Text Domain: sacf
 Domain Path: /lang
  */
@@ -30,7 +30,7 @@ if (!class_exists('sacf')):
 			// define constant
 			if (!defined('SACF')) {
 				define('SACF', true);
-				define('SACF_VERSION', "2.0.6");
+				define('SACF_VERSION', "2.0.8");
 			}
 
 			// field builder files
