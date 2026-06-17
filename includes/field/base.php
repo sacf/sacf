@@ -21,6 +21,7 @@ class base {
 	public $name; 	///< name for this field
 	public $type; 	///< type of this field
 	public $key; 	///< key for this field
+	public $parent_repeater; ///< key for parent repeater
 	protected $array = false; ///< the field array
 	private $base_args = array(
 		'label' => '',
@@ -229,7 +230,18 @@ class base {
 		$this->if($field, $operator, $value);
 		return $this;
 	}
-
+	
+	/**
+	 * set key of parent repeater
+	 *
+	 * @return void
+	 */
+	public function parent_repeater($key)
+	{
+		$this->parent_repeater = $key;
+		return $this;
+	}
+	
 	/**
 	 * get field key
 	 *
@@ -276,6 +288,11 @@ class base {
 		$this->base_args['name'] = $this->name;
 		$this->base_args['type'] = $this->type;
 		$this->base_args['key'] = $this->key;
+		
+		// connect parent repeater if availible
+		if($this->parent_repeater){
+			$this->base_args['parent_repeater'] = $this->parent_repeater;
+		}
 
 		// merges base args with default field options
 		$args = wp_parse_args($this->base_args, $this->defaults);

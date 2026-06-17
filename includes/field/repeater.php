@@ -21,6 +21,8 @@ class repeater extends base {
 		'min' => '',
 		'max' => '',
 		'layout' => 'row',
+		'pagination' => 0,
+		'rows_per_page' => 20,
 		'collapsed' => '',
 		'button_label' => '',
 	); ///< defaults
@@ -55,6 +57,29 @@ class repeater extends base {
 	 */
 	public function max($int) {
 		$this->options['max'] = $int;
+		return $this;
+	}
+
+
+	/**
+	 * enable pagination
+	 *
+	 * @param bool $bool is pagination active
+	 * @return void
+	 */
+	public function pagination($bool = true) {
+		$this->options['pagination'] = $bool;
+		return $this;
+	}
+	
+	/**
+	 * set rows per page when using pagination
+	 *
+	 * @param int $int amount of rows per page
+	 * @return void
+	 */
+	public function rows_per_page($int) {
+		$this->options['rows_per_page'] = $int;
 		return $this;
 	}
 
@@ -129,6 +154,7 @@ class repeater extends base {
 	private function makeSubFields() {
 		$all = array();
 		foreach ($this->sub_fields as $sub_field) {
+			$sub_field->parent_repeater($this->get_key());
 			$all[] = $sub_field->make();
 		}
 		return $all;
